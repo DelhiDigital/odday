@@ -40,7 +40,7 @@ export default function Home() {
             <h1 className="text-[28px] md:text-[48px] font-light leading-[1.1] mb-5" style={{ fontFamily: "Georgia, serif" }}>
               Mindset is Bigger<br />than Medals
             </h1>
-            <Link href="/shop" className="inline-block bg-white/90 backdrop-blur-sm text-[#1a1a1a] text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 rounded-full font-medium hover:bg-[#A52019] hover:text-white transition-all duration-300">
+            <Link href="/shop" className="inline-block bg-white text-[#1a1a1a] text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 rounded-full font-semibold hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-md">
               Shop Collection
             </Link>
           </div>
