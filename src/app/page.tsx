@@ -27,10 +27,10 @@ export default function Home() {
       <section className="relative">
         <div className="relative aspect-[4/5] md:aspect-[21/9] overflow-hidden">
           <Image
-            src="/images/odday-hero.jpg"
+            src="/images/odday-friends.jpg"
             alt="ODDAY — New Drop"
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             priority
             sizes="100vw"
           />
