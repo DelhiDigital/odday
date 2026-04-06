@@ -41,7 +41,7 @@ export default function Home() {
                 href="/shop?collection=new"
                 className="inline-block bg-white/90 backdrop-blur-sm text-[#1a1a1a] text-[12px] md:text-[13px] tracking-[0.1em] uppercase px-8 md:px-12 py-3.5 md:py-4 rounded-full font-medium hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-lg"
               >
-                New Drop ✦
+                New Drop
               </Link>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function Home() {
         <ScrollReveal>
           <div className="text-center mb-8 md:mb-10">
             <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>
-              New Drop ✦
+              New Drop
             </h2>
           </div>
         </ScrollReveal>
@@ -105,7 +105,7 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-10">
               <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>
-                Bestsellers 🏆
+                Bestsellers
               </h2>
             </div>
           </ScrollReveal>
@@ -170,13 +170,13 @@ export default function Home() {
       <section className="px-5 md:px-10 py-12 md:py-16 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
-            { emoji: "✦", title: "Premium Quality", sub: "220 GSM combed cotton, bio-washed" },
-            { emoji: "🧵", title: "Timeless Design", sub: "Minimal pieces that last seasons" },
-            { emoji: "↩️", title: "Easy Returns", sub: "7-day hassle-free return policy" },
-            { emoji: "⚡", title: "Fast Shipping", sub: "Ships within 48 hours across India" },
+            { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A52019" strokeWidth="1.2"><path d="M12 2L14.09 8.26L20.18 8.27L15.23 12.14L17.09 18.42L12 14.77L6.91 18.42L8.77 12.14L3.82 8.27L9.91 8.26L12 2Z"/></svg>, title: "Premium Quality", sub: "220 GSM combed cotton, bio-washed" },
+            { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A52019" strokeWidth="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>, title: "Timeless Design", sub: "Minimal pieces that last seasons" },
+            { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A52019" strokeWidth="1.2"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4"/></svg>, title: "Easy Returns", sub: "7-day hassle-free return policy" },
+            { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A52019" strokeWidth="1.2"><rect x="2" y="7" width="15" height="13" rx="1"/><path d="M17 11h3l2 3v4h-5"/><circle cx="7.5" cy="20" r="1.5" fill="#A52019"/><circle cx="19.5" cy="20" r="1.5" fill="#A52019"/></svg>, title: "Fast Shipping", sub: "Ships within 48 hours across India" },
           ].map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.08} className="text-center py-6 px-4 rounded-lg bg-[#f5f4f0]">
-              <span className="text-[24px] block mb-3">{item.emoji}</span>
+              <div className="flex justify-center mb-3">{item.icon}</div>
               <p className="text-[12px] tracking-[0.06em] font-medium mb-1">{item.title}</p>
               <p className="text-[11px] text-[#999] leading-[1.5]">{item.sub}</p>
             </ScrollReveal>

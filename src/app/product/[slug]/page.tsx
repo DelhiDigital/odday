@@ -15,18 +15,10 @@ const sizes = [
   { label: "12-13Y", available: true },
 ];
 
-const colors = [
-  { name: "White", hex: "#f5f0eb", active: true },
-  { name: "Maroon", hex: "#711109", active: false },
-  { name: "Black", hex: "#1a1a1a", active: false },
-];
-
-const images = [
-  "/images/product-1.jpg",
-  "/images/product-5.jpg",
-  "/images/product-5-hover.jpg",
-  "/images/product-7.jpg",
-  "/images/product-7-hover.jpg",
+const colorVariants = [
+  { name: "White", thumb: "/images/product-1.jpg", images: ["/images/product-1.jpg", "/images/product-5.jpg", "/images/product-5-hover.jpg", "/images/product-7.jpg", "/images/product-7-hover.jpg"] },
+  { name: "Maroon", thumb: "/images/product-8.jpg", images: ["/images/product-8.jpg", "/images/product-8-hover.jpg", "/images/product-9.jpg", "/images/product-9-hover.jpg"] },
+  { name: "Black", thumb: "/images/product-6.jpg", images: ["/images/product-6.jpg", "/images/product-6-hover.jpg", "/images/product-10.jpg", "/images/product-10-hover.jpg"] },
 ];
 
 const othersAlsoBought = [
@@ -39,24 +31,28 @@ const othersAlsoBought = [
 ];
 
 export default function ProductPage() {
+  const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("White");
   const [activeImg, setActiveImg] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const [added, setAdded] = useState(false);
   const [sizeError, setSizeError] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  const currentImages = colorVariants[selectedColor].images;
+
   const toggleAccordion = (key: string) => setOpenAccordion(openAccordion === key ? null : key);
 
   const handleAdd = () => {
-    if (!selectedSize) {
-      setSizeError(true);
-      return;
-    }
+    if (!selectedSize) { setSizeError(true); return; }
     setSizeError(false);
     setAdded(true);
     setTimeout(() => setAdded(false), 2500);
+  };
+
+  const handleColorChange = (idx: number) => {
+    setSelectedColor(idx);
+    setActiveImg(0);
   };
 
   const scrollCarousel = (dir: number) => {
@@ -81,31 +77,13 @@ export default function ProductPage() {
 
         <div className="md:grid md:grid-cols-[1fr_380px] lg:grid-cols-[1fr_420px] md:gap-8 lg:gap-12">
 
-          {/* ===== LEFT: IMAGE GALLERY ===== */}
+          {/* ===== LEFT: IMAGES — Main + Thumbnails ===== */}
           <div>
-            {/* Mobile: horizontal swipe */}
+            {/* Mobile: swipeable main image */}
             <div className="md:hidden relative">
               <div className="aspect-[3/4] relative bg-[#f5f4f0] overflow-hidden">
-                <Image
-                  src={images[activeImg]}
-                  alt="Product"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="100vw"
-                />
+                <Image src={currentImages[activeImg]} alt="Product" fill className="object-cover" priority sizes="100vw" />
               </div>
-              {/* Dots */}
-              <div className="flex justify-center gap-1.5 py-3">
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImg(i)}
-                    className={`w-2 h-2 rounded-full transition-all ${activeImg === i ? "bg-[#1a1a1a] w-5" : "bg-[#ddd]"}`}
-                  />
-                ))}
-              </div>
-              {/* Arrows */}
               <button
                 onClick={() => setActiveImg(Math.max(0, activeImg - 1))}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm"
@@ -113,36 +91,63 @@ export default function ProductPage() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="1.5"><path d="M15 19l-7-7 7-7"/></svg>
               </button>
               <button
-                onClick={() => setActiveImg(Math.min(images.length - 1, activeImg + 1))}
+                onClick={() => setActiveImg(Math.min(currentImages.length - 1, activeImg + 1))}
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="1.5"><path d="M9 5l7 7-7 7"/></svg>
               </button>
+              {/* Thumbnail strip mobile */}
+              <div className="flex gap-1.5 px-4 py-3 overflow-x-auto">
+                {currentImages.map((src, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className={`relative w-[56px] h-[72px] shrink-0 overflow-hidden rounded-sm border-2 transition-colors ${
+                      activeImg === i ? "border-[#1a1a1a]" : "border-transparent"
+                    }`}
+                  >
+                    <Image src={src} alt="" fill className="object-cover" sizes="56px" />
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Desktop: vertical scrolling images — H&M style */}
-            <div className="hidden md:flex flex-col gap-1">
-              {images.map((src, i) => (
-                <div key={i} className="relative aspect-[3/4] bg-[#f5f4f0] overflow-hidden cursor-zoom-in group">
-                  <Image
-                    src={src}
-                    alt={`View ${i + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="55vw"
-                    priority={i === 0}
-                  />
-                </div>
-              ))}
+            {/* Desktop: Main image + thumbnail row below */}
+            <div className="hidden md:block">
+              {/* Main Image */}
+              <div className="relative aspect-[3/4] bg-[#f5f4f0] overflow-hidden cursor-zoom-in group mb-2">
+                <Image
+                  src={currentImages[activeImg]}
+                  alt="Product"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  sizes="55vw"
+                  priority
+                />
+              </div>
+              {/* Thumbnail Row */}
+              <div className="flex gap-1.5">
+                {currentImages.map((src, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className={`relative flex-1 aspect-[3/4] overflow-hidden rounded-sm border-2 transition-all duration-200 hover:opacity-90 ${
+                      activeImg === i ? "border-[#1a1a1a]" : "border-transparent opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <Image src={src} alt="" fill className="object-cover" sizes="12vw" />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* ===== RIGHT: PRODUCT INFO (Sticky) ===== */}
           <div className="px-5 md:px-0 pt-5 md:pt-0">
-            <div className="md:sticky md:top-[80px]">
+            <div className="md:sticky md:top-[70px]">
 
-              {/* Product Name & Price — H&M style */}
-              <h1 className="text-[18px] md:text-[20px] font-normal mb-1" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400 }}>
+              {/* Name & Price */}
+              <h1 className="text-[18px] md:text-[20px] mb-1" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400 }}>
                 Mindset Oversized Tee
               </h1>
               <div className="flex items-baseline gap-2.5 mb-1">
@@ -152,29 +157,29 @@ export default function ProductPage() {
               </div>
               <p className="text-[11px] text-[#999] mb-5">MRP incl. of all taxes</p>
 
-              {/* Color — H&M style: color name + circle swatches */}
+              {/* Color Swatches — H&M image thumbnail style */}
               <div className="mb-5">
-                <p className="text-[12px] mb-2.5">
-                  <span className="text-[#999]">Colour:</span> <span className="font-medium">{selectedColor}</span>
+                <p className="text-[12px] mb-3 uppercase tracking-[0.04em]">
+                  <span className="text-[#999]">Colour:</span> <span className="font-medium">{colorVariants[selectedColor].name}</span>
                 </p>
                 <div className="flex gap-2">
-                  {colors.map((c) => (
+                  {colorVariants.map((variant, i) => (
                     <button
-                      key={c.name}
-                      onClick={() => setSelectedColor(c.name)}
-                      className={`w-9 h-9 rounded-full transition-all ${
-                        selectedColor === c.name
-                          ? "ring-2 ring-offset-2 ring-[#1a1a1a]"
-                          : "border border-[#ddd] hover:border-[#999]"
+                      key={variant.name}
+                      onClick={() => handleColorChange(i)}
+                      className={`relative w-[60px] h-[76px] overflow-hidden rounded-sm border-2 transition-all duration-200 ${
+                        selectedColor === i
+                          ? "border-[#1a1a1a]"
+                          : "border-[#e5e5e5] hover:border-[#999]"
                       }`}
-                      style={{ backgroundColor: c.hex }}
-                      title={c.name}
-                    />
+                    >
+                      <Image src={variant.thumb} alt={variant.name} fill className="object-cover" sizes="60px" />
+                    </button>
                   ))}
                 </div>
               </div>
 
-              {/* Size — H&M style: grid of size buttons */}
+              {/* Size */}
               <div className="mb-5">
                 <div className="flex items-center justify-between mb-2.5">
                   <p className="text-[12px]">
@@ -213,13 +218,11 @@ export default function ProductPage() {
                 )}
               </div>
 
-              {/* Add to Bag — H&M style: full width black button */}
+              {/* Add to Bag */}
               <button
                 onClick={handleAdd}
                 className={`w-full text-[13px] tracking-[0.04em] py-4 rounded-sm font-medium transition-all duration-500 mb-3 ${
-                  added
-                    ? "bg-[#2d7d3a] text-white"
-                    : "bg-[#1a1a1a] text-white hover:bg-[#333]"
+                  added ? "bg-[#2d7d3a] text-white" : "bg-[#1a1a1a] text-white hover:bg-[#333]"
                 }`}
               >
                 {added ? "✓  Added to bag" : "Add"}
@@ -233,7 +236,7 @@ export default function ProductPage() {
                 Save for later
               </button>
 
-              {/* Delivery & Returns — H&M accordion style */}
+              {/* Accordions */}
               <div className="border-t border-[#eee]">
                 {[
                   {
@@ -255,16 +258,13 @@ export default function ProductPage() {
                     content: (
                       <div className="text-[12px] text-[#666] leading-[1.8] space-y-2">
                         <p>We offer a 7-day hassle-free return policy. Items must be unworn with tags attached.</p>
-                        <p>Refund will be processed within 5-7 business days of receiving the returned item.</p>
+                        <p>Refund processed within 5-7 business days of receiving the item.</p>
                       </div>
                     ),
                   },
                 ].map((item) => (
                   <div key={item.key} className="border-b border-[#eee]">
-                    <button
-                      onClick={() => toggleAccordion(item.key)}
-                      className="w-full flex items-center gap-3 py-4 text-[13px] group"
-                    >
+                    <button onClick={() => toggleAccordion(item.key)} className="w-full flex items-center gap-3 py-4 text-[13px] group">
                       <span className="text-[#999]">{item.icon}</span>
                       <span className="flex-1 text-left group-hover:text-[#A52019] transition-colors">{item.label}</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.5"
@@ -272,19 +272,14 @@ export default function ProductPage() {
                         <path d="M6 9l6 6 6-6"/>
                       </svg>
                     </button>
-                    {openAccordion === item.key && (
-                      <div className="pb-4 animate-fade-in">{item.content}</div>
-                    )}
+                    {openAccordion === item.key && <div className="pb-4 animate-fade-in">{item.content}</div>}
                   </div>
                 ))}
               </div>
 
-              {/* Product Description — H&M style */}
+              {/* Description */}
               <div className="border-b border-[#eee]">
-                <button
-                  onClick={() => toggleAccordion("description")}
-                  className="w-full flex items-center justify-between py-4 text-[13px] font-medium"
-                >
+                <button onClick={() => toggleAccordion("description")} className="w-full flex items-center justify-between py-4 text-[13px] font-medium">
                   <span>Description & fit</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.5"
                     className={`transition-transform duration-300 ${openAccordion === "description" ? "rotate-180" : ""}`}>
@@ -293,10 +288,7 @@ export default function ProductPage() {
                 </button>
                 {openAccordion === "description" && (
                   <div className="pb-5 text-[12px] text-[#666] leading-[1.8] space-y-3 animate-fade-in">
-                    <p>
-                      Oversized tee in soft, premium combed cotton with a round neckline and dropped shoulders.
-                      Minimal &quot;MINDSET&quot; typography print on the chest. Ribbed crew neck. ODDAY woven label at hem.
-                    </p>
+                    <p>Oversized tee in soft, premium combed cotton with a round neckline and dropped shoulders. Minimal &quot;MINDSET&quot; typography on chest. Ribbed crew neck. ODDAY woven label at hem.</p>
                     <div className="space-y-1">
                       <p><strong>Fit:</strong> Oversized / Relaxed</p>
                       <p><strong>Composition:</strong> 100% Cotton, 220 GSM</p>
@@ -307,12 +299,9 @@ export default function ProductPage() {
                 )}
               </div>
 
-              {/* Material */}
+              {/* Materials */}
               <div className="border-b border-[#eee]">
-                <button
-                  onClick={() => toggleAccordion("material")}
-                  className="w-full flex items-center justify-between py-4 text-[13px] font-medium"
-                >
+                <button onClick={() => toggleAccordion("material")} className="w-full flex items-center justify-between py-4 text-[13px] font-medium">
                   <span>Materials</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.5"
                     className={`transition-transform duration-300 ${openAccordion === "material" ? "rotate-180" : ""}`}>
@@ -327,7 +316,7 @@ export default function ProductPage() {
                       </div>
                       <span className="shrink-0 text-[11px]">Cotton 100%</span>
                     </div>
-                    <p>Premium combed cotton. Bio-washed for extra softness. Pre-shrunk fabric to maintain shape after washing.</p>
+                    <p>Premium combed cotton. Bio-washed for extra softness. Pre-shrunk to maintain shape.</p>
                   </div>
                 )}
               </div>
@@ -337,13 +326,11 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* ===== OTHERS ALSO BOUGHT — H&M horizontal carousel ===== */}
+      {/* ===== OTHERS ALSO BOUGHT ===== */}
       <section className="mt-12 md:mt-20 border-t border-[#eee]">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 py-10 md:py-14">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-[18px] md:text-[22px]" style={{ fontFamily: "Georgia, serif" }}>
-              Others also bought
-            </h2>
+            <h2 className="text-[18px] md:text-[22px]" style={{ fontFamily: "Georgia, serif" }}>Others also bought</h2>
             <div className="hidden md:flex gap-2">
               <button onClick={() => scrollCarousel(-1)} className="w-9 h-9 border border-[#ddd] rounded-full flex items-center justify-center hover:border-[#1a1a1a] transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="1.5"><path d="M15 19l-7-7 7-7"/></svg>
@@ -353,13 +340,7 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
-
-          {/* Horizontal scroll carousel */}
-          <div
-            ref={carouselRef}
-            className="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth pb-4 -mx-5 px-5 md:mx-0 md:px-0"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
+          <div ref={carouselRef} className="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth pb-4 -mx-5 px-5 md:mx-0 md:px-0" style={{ scrollbarWidth: "none" }}>
             {othersAlsoBought.map((p) => (
               <div key={p.id} className="shrink-0 w-[160px] md:w-[220px]">
                 <ProductCard {...p} />
@@ -373,9 +354,7 @@ export default function ProductPage() {
       <section className="border-t border-[#eee]">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 py-10 md:py-14">
           <ScrollReveal>
-            <h2 className="text-[18px] md:text-[22px] mb-6 md:mb-8" style={{ fontFamily: "Georgia, serif" }}>
-              Recently viewed
-            </h2>
+            <h2 className="text-[18px] md:text-[22px] mb-6 md:mb-8" style={{ fontFamily: "Georgia, serif" }}>Recently viewed</h2>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {othersAlsoBought.slice(0, 4).map((p, i) => (

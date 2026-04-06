@@ -12,7 +12,7 @@ export default function Marquee({ text, speed = 30 }: { text: string; speed?: nu
         {items.map((t, i) => (
           <span key={i} className="text-[11px] md:text-[13px] tracking-[0.15em] uppercase mx-8 md:mx-14" style={{ fontFamily: "Georgia, serif", fontWeight: 400 }}>
             {t}
-            <span className="mx-8 md:mx-14 text-[#A52019]">✦</span>
+            <span className="mx-8 md:mx-14 text-[#A52019]">—</span>
           </span>
         ))}
       </div>
