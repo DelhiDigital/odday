@@ -42,7 +42,7 @@ export default function ShopPage() {
     <>
       {/* Collection Hero */}
       <div className="relative h-[200px] md:h-[280px] bg-[#f7f7f7] overflow-hidden">
-        <Image src="/images/collection-1.jpg" alt="Shop" fill className="object-cover opacity-40" sizes="100vw" />
+        <Image src="/images/odday-plane.jpg" alt="Shop" fill className="object-cover opacity-40" sizes="100vw" />
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div>
             <span className="section-label">Collection</span>

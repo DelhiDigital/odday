@@ -16,9 +16,9 @@ const sizes = [
 ];
 
 const colorVariants = [
-  { name: "White", thumb: "/images/product-1.jpg", images: ["/images/product-1.jpg", "/images/product-5.jpg", "/images/product-5-hover.jpg", "/images/product-7.jpg", "/images/product-7-hover.jpg"] },
-  { name: "Maroon", thumb: "/images/product-8.jpg", images: ["/images/product-8.jpg", "/images/product-8-hover.jpg", "/images/product-9.jpg", "/images/product-9-hover.jpg"] },
-  { name: "Black", thumb: "/images/product-6.jpg", images: ["/images/product-6.jpg", "/images/product-6-hover.jpg", "/images/product-10.jpg", "/images/product-10-hover.jpg"] },
+  { name: "White", thumb: "/images/odday-hoodie-boy.jpg", images: ["/images/odday-hoodie-boy.jpg", "/images/odday-coords.jpg", "/images/odday-blue-set.jpg", "/images/odday-three-kids.jpg", "/images/odday-folded.jpg"] },
+  { name: "Maroon", thumb: "/images/product-8.jpg", images: ["/images/product-8.jpg", "/images/product-8-hover.jpg", "/images/odday-skate-boy.jpg", "/images/odday-jersey.jpg"] },
+  { name: "Black", thumb: "/images/product-6.jpg", images: ["/images/product-6.jpg", "/images/product-6-hover.jpg", "/images/odday-car.jpg", "/images/odday-music.jpg"] },
 ];
 
 const othersAlsoBought = [

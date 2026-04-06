@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const mobileCategories = [
-  { label: "Girl", sub: "4 - 13 Years", image: "/images/product-6.jpg", href: "/shop?category=girl" },
-  { label: "Boy", sub: "4 - 13 Years", image: "/images/product-7.jpg", href: "/shop?category=boy" },
-  { label: "New Drop", sub: "Latest Collection", image: "/images/product-1.jpg", href: "/shop?collection=new" },
-  { label: "Bestsellers", sub: "Most Loved", image: "/images/product-5.jpg", href: "/shop?sort=best-sellers" },
-  { label: "Accessories", sub: "Caps & More", image: "/images/product-4.jpg", href: "/shop?category=accessories" },
+  { label: "Girl", sub: "4 - 13 Years", image: "/images/odday-skate-girl.jpg", href: "/shop?category=girl" },
+  { label: "Boy", sub: "4 - 13 Years", image: "/images/odday-jersey.jpg", href: "/shop?category=boy" },
+  { label: "New Drop", sub: "Latest Collection", image: "/images/odday-plane.jpg", href: "/shop?collection=new" },
+  { label: "Bestsellers", sub: "Most Loved", image: "/images/odday-hoodie-boy.jpg", href: "/shop?sort=best-sellers" },
+  { label: "Accessories", sub: "Caps & More", image: "/images/odday-running.jpg", href: "/shop?category=accessories" },
 ];
 
 const desktopNav = [

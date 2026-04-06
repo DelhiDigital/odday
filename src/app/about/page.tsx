@@ -8,7 +8,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="relative h-[55vh] md:h-[65vh] overflow-hidden">
-        <Image src="/images/about-hero.jpg" alt="About ODDAY" fill className="object-cover" priority />
+        <Image src="/images/odday-music.jpg" alt="About ODDAY" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent" />
         <div className="absolute inset-0 flex items-end px-5 md:px-10 pb-12 md:pb-16 max-w-[1600px] mx-auto">
           <div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
       {/* Philosophy */}
       <section className="grid md:grid-cols-2">
         <ScrollReveal direction="left" className="relative aspect-square md:aspect-auto min-h-[400px] overflow-hidden">
-          <Image src="/images/collection-1.jpg" alt="Philosophy" fill className="object-cover" sizes="50vw" />
+          <Image src="/images/odday-three-kids.jpg" alt="Philosophy" fill className="object-cover" sizes="50vw" />
         </ScrollReveal>
         <ScrollReveal direction="right" className="bg-[#1a1a1a] text-white flex items-center px-8 md:px-16 lg:px-24 py-16 md:py-0">
           <div className="max-w-sm">

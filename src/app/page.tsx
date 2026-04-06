@@ -12,7 +12,7 @@ const newDropProducts = [
 ];
 
 const bestSellers = [
-  { id: "confidence-hoodie", name: "Confidence Sweatshirt", price: 2199, originalPrice: 2599, image: "/images/product-5.jpg", hoverImage: "/images/product-5-hover.jpg", tag: "Best Seller" },
+  { id: "confidence-hoodie", name: "Confidence Hoodie", price: 2199, originalPrice: 2599, image: "/images/product-5.jpg", hoverImage: "/images/product-5-hover.jpg", tag: "Best Seller" },
   { id: "play-shorts-olive", name: "Play Skater Jeans", price: 1499, image: "/images/product-6.jpg", hoverImage: "/images/product-6-hover.jpg" },
   { id: "character-tee-sand", name: "Character Long Tee", price: 1299, image: "/images/product-7.jpg", hoverImage: "/images/product-7-hover.jpg" },
   { id: "effort-joggers-gray", name: "Effort Sweatshirt", price: 1599, originalPrice: 1899, image: "/images/product-8.jpg", hoverImage: "/images/product-8-hover.jpg" },
@@ -23,67 +23,70 @@ const bestSellers = [
 export default function Home() {
   return (
     <>
-      {/* ===== HERO — Full width banner, Sommer style ===== */}
+      {/* ===== HERO — Full width, your editorial image ===== */}
       <section className="relative">
-        <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden">
+        <div className="relative aspect-[4/5] md:aspect-[21/9] overflow-hidden">
           <Image
-            src="/images/hero-1.jpg"
+            src="/images/odday-hero.jpg"
             alt="ODDAY — New Drop"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
             sizes="100vw"
           />
-          {/* Overlay CTA */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <Link
-                href="/shop?collection=new"
-                className="inline-block bg-white/90 backdrop-blur-sm text-[#1a1a1a] text-[12px] md:text-[13px] tracking-[0.1em] uppercase px-8 md:px-12 py-3.5 md:py-4 rounded-full font-medium hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-lg"
-              >
-                New Drop
-              </Link>
-            </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute bottom-8 md:bottom-12 left-5 md:left-10 text-white">
+            <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase font-light mb-2 opacity-80">First Collection 2026</p>
+            <h1 className="text-[28px] md:text-[48px] font-light leading-[1.1] mb-5" style={{ fontFamily: "Georgia, serif" }}>
+              Mindset is Bigger<br />than Medals
+            </h1>
+            <Link href="/shop" className="inline-block bg-white/90 backdrop-blur-sm text-[#1a1a1a] text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 rounded-full font-medium hover:bg-[#A52019] hover:text-white transition-all duration-300">
+              Shop Collection
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ===== SECONDARY BANNER ===== */}
-      <section className="px-5 md:px-10 pt-8 md:pt-12 max-w-[1400px] mx-auto">
+      {/* ===== EDITORIAL GRID — 3 images, Sommer/H&M style ===== */}
+      <section className="px-5 md:px-10 py-8 md:py-12 max-w-[1400px] mx-auto">
         <ScrollReveal>
-          <div className="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden rounded-lg">
-            <Image
-              src="/images/hero-2.jpg"
-              alt="ODDAY Collection"
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent flex items-center px-8 md:px-14">
-              <div className="text-white">
-                <p className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-light mb-2 opacity-80">First Collection 2026</p>
-                <h2 className="text-[22px] md:text-[34px] leading-[1.15]" style={{ fontFamily: "Georgia, serif" }}>
-                  Mindset is Bigger<br />than Medals
-                </h2>
-                <Link href="/shop" className="inline-block mt-4 text-[10px] tracking-[0.15em] uppercase border-b border-white/60 pb-1 hover:border-white transition-colors">
-                  Shop Now
-                </Link>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+            {/* Large left */}
+            <div className="col-span-2 md:col-span-1 md:row-span-2 relative aspect-[4/5] overflow-hidden rounded-lg group">
+              <Image src="/images/odday-plane.jpg" alt="Editorial" fill className="object-cover img-zoom" sizes="(max-width: 768px) 100vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="absolute bottom-5 left-5 text-white">
+                <p className="text-[12px] md:text-[13px] tracking-[0.08em] uppercase font-medium">New Drop</p>
+                <p className="text-[10px] opacity-70 mt-0.5">First Collection 2026</p>
+              </div>
+            </div>
+            {/* Top right */}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg group">
+              <Image src="/images/odday-friends.jpg" alt="Editorial" fill className="object-cover img-zoom" sizes="(max-width: 768px) 50vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <p className="text-[11px] tracking-[0.08em] uppercase font-medium">T-Shirts</p>
+              </div>
+            </div>
+            {/* Bottom right */}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg group">
+              <Image src="/images/odday-jersey.jpg" alt="Editorial" fill className="object-cover img-zoom" sizes="(max-width: 768px) 50vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <p className="text-[11px] tracking-[0.08em] uppercase font-medium">Streetwear</p>
               </div>
             </div>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* ===== NEW DROP — Sommer "News" style with emoji ===== */}
-      <section className="px-5 md:px-10 py-12 md:py-16 max-w-[1400px] mx-auto">
+      {/* ===== NEW DROP ===== */}
+      <section className="px-5 md:px-10 py-10 md:py-16 max-w-[1400px] mx-auto">
         <ScrollReveal>
           <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>
-              New Drop
-            </h2>
+            <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>New Drop</h2>
           </div>
         </ScrollReveal>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {newDropProducts.map((p, i) => (
             <ScrollReveal key={p.id} delay={i * 0.08}>
@@ -91,25 +94,38 @@ export default function Home() {
             </ScrollReveal>
           ))}
         </div>
-
         <ScrollReveal className="text-center mt-8">
-          <Link href="/shop?collection=new" className="btn-outline rounded-full text-[10px] px-8">
-            View All New Arrivals
-          </Link>
+          <Link href="/shop?collection=new" className="btn-outline rounded-full text-[10px] px-8">View All New Arrivals</Link>
         </ScrollReveal>
       </section>
 
-      {/* ===== BESTSELLERS — Sommer style with hover swap ===== */}
+      {/* ===== WIDE EDITORIAL BANNER ===== */}
+      <ScrollReveal>
+        <section className="relative aspect-[16/7] md:aspect-[21/7] overflow-hidden">
+          <Image src="/images/odday-basketball.jpg" alt="Campaign" fill className="object-cover" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-5 md:px-10 max-w-[1400px] mx-auto">
+            <div className="text-white max-w-md">
+              <p className="text-[10px] tracking-[0.3em] uppercase opacity-70 mb-2">The Philosophy</p>
+              <h2 className="text-[24px] md:text-[36px] leading-[1.15] mb-5" style={{ fontFamily: "Georgia, serif" }}>
+                Childhood is a journey, not a competition.
+              </h2>
+              <Link href="/about" className="btn-outline border-white/40 text-white hover:bg-white hover:text-[#1a1a1a] rounded-full">
+                Our Story
+              </Link>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ===== BESTSELLERS ===== */}
       <section className="bg-[#f5f4f0]">
         <div className="px-5 md:px-10 py-12 md:py-16 max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-10">
-              <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>
-                Bestsellers
-              </h2>
+              <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>Bestsellers</h2>
             </div>
           </ScrollReveal>
-
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
             {bestSellers.map((p, i) => (
               <ScrollReveal key={p.id} delay={i * 0.06}>
@@ -117,31 +133,19 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-
           <ScrollReveal className="text-center mt-8">
-            <Link href="/shop?sort=best-sellers" className="btn-outline rounded-full text-[10px] px-8">
-              View All Bestsellers
-            </Link>
+            <Link href="/shop?sort=best-sellers" className="btn-outline rounded-full text-[10px] px-8">View All Bestsellers</Link>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== BRAND STORY — Sommer "image with text" style ===== */}
+      {/* ===== BRAND STORY — Image + Quote ===== */}
       <section className="px-5 md:px-10 py-12 md:py-20 max-w-[1400px] mx-auto">
         <ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-            {/* Image */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-14 items-center">
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
-              <Image
-                src="/images/product-7.jpg"
-                alt="ODDAY Story"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              <Image src="/images/odday-car.jpg" alt="ODDAY Story" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
-
-            {/* Text */}
             <div className="py-4 md:py-8">
               <span className="section-label">Our Story</span>
               <h2 className="text-[26px] md:text-[34px] mb-6 leading-[1.25]" style={{ fontFamily: "Georgia, serif" }}>
@@ -155,10 +159,28 @@ export default function Home() {
               <p className="text-[13px] text-[#999] leading-[1.9] mb-8">
                 ODDAY celebrates growth, effort, and the power of a good outfit. Less clutter, more character.
               </p>
-              <Link href="/about" className="btn-outline rounded-full text-[10px] px-8">
-                About ODDAY
-              </Link>
+              <Link href="/about" className="btn-outline rounded-full text-[10px] px-8">About ODDAY</Link>
             </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ===== SPLIT EDITORIAL — Two images side by side ===== */}
+      <section className="grid grid-cols-2 gap-1 md:gap-2">
+        <ScrollReveal direction="left" className="relative aspect-[3/4] overflow-hidden">
+          <Image src="/images/odday-hoodie-boy.jpg" alt="Hoodie" fill className="object-cover img-zoom" sizes="50vw" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+          <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-white">
+            <p className="text-[11px] md:text-[13px] tracking-[0.08em] uppercase font-medium">Hoodies</p>
+            <p className="text-[9px] md:text-[10px] opacity-60 mt-0.5">Co-ord Sets</p>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal direction="right" className="relative aspect-[3/4] overflow-hidden">
+          <Image src="/images/odday-blue-set.jpg" alt="Blue Set" fill className="object-cover img-zoom" sizes="50vw" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+          <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-white">
+            <p className="text-[11px] md:text-[13px] tracking-[0.08em] uppercase font-medium">Shorts</p>
+            <p className="text-[9px] md:text-[10px] opacity-60 mt-0.5">Everyday Sets</p>
           </div>
         </ScrollReveal>
       </section>
@@ -166,7 +188,7 @@ export default function Home() {
       {/* ===== MARQUEE ===== */}
       <Marquee text="Elevated Kidswear — Premium Quality — Ages 4 to 13 — Mindset over Medals — Built for Play" />
 
-      {/* ===== VALUES — Sommer trust section ===== */}
+      {/* ===== VALUES ===== */}
       <section className="px-5 md:px-10 py-12 md:py-16 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
@@ -184,19 +206,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== CONFIDENCE BANNER — Full width editorial ===== */}
+      <ScrollReveal>
+        <section className="px-5 md:px-10 pb-10 md:pb-16 max-w-[1400px] mx-auto">
+          <div className="relative aspect-[16/9] md:aspect-[21/7] rounded-lg overflow-hidden">
+            <Image src="/images/odday-folded.jpg" alt="Confidence in every detail" fill className="object-cover" sizes="100vw" />
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ===== INSTAGRAM ===== */}
       <section className="px-5 md:px-10 py-10 md:py-14 max-w-[1400px] mx-auto">
         <ScrollReveal>
           <div className="text-center mb-8">
-            <h2 className="text-[24px] md:text-[30px]" style={{ fontFamily: "Georgia, serif" }}>
-              @odday.in
-            </h2>
+            <h2 className="text-[24px] md:text-[30px]" style={{ fontFamily: "Georgia, serif" }}>@odday.in</h2>
             <p className="text-[12px] text-[#999] mt-1">Follow the journey</p>
           </div>
         </ScrollReveal>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-          {["/images/product-1.jpg", "/images/product-5.jpg", "/images/product-8.jpg", "/images/product-10.jpg"].map((src, i) => (
+          {["/images/odday-skate-girl.jpg", "/images/odday-three-kids.jpg", "/images/odday-skate-boy.jpg", "/images/odday-running.jpg"].map((src, i) => (
             <ScrollReveal key={i} delay={i * 0.06}>
               <a href="#" className="relative aspect-square overflow-hidden rounded-lg group block">
                 <Image src={src} alt="" fill className="object-cover img-zoom" sizes="25vw" />
@@ -211,7 +239,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SECOND MARQUEE — brand words ===== */}
+      {/* ===== SECOND MARQUEE ===== */}
       <Marquee text="Effort — Confidence — Character — Mindset — Growth — Play — Own It" speed={25} />
     </>
   );
