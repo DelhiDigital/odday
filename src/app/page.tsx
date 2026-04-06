@@ -40,7 +40,7 @@ export default function Home() {
             <h1 className="text-[28px] md:text-[48px] font-light leading-[1.1] mb-5" style={{ fontFamily: "Georgia, serif" }}>
               Mindset is Bigger<br />than Medals
             </h1>
-            <Link href="/shop" className="inline-block bg-white text-[#1a1a1a] text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 rounded-full font-semibold hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-md">
+            <Link href="/shop" className="inline-block bg-white text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 rounded-full font-semibold hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-md" style={{ color: "#1a1a1a" }}>
               Shop Collection
             </Link>
           </div>
@@ -83,8 +83,18 @@ export default function Home() {
       {/* ===== NEW DROP ===== */}
       <section className="px-5 md:px-10 py-10 md:py-16 max-w-[1400px] mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }}>New Drop</h2>
+          <div className="relative aspect-[16/7] md:aspect-[21/7] rounded-lg overflow-hidden mb-8 md:mb-10">
+            <Image src="/images/odday-running.jpg" alt="New Drop" fill className="object-cover object-center" sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/35 to-transparent" />
+            <div className="absolute inset-0 flex items-center px-6 md:px-12">
+              <div className="text-white">
+                <p className="text-[10px] tracking-[0.3em] uppercase opacity-70 mb-2">First Collection 2026</p>
+                <h2 className="text-[26px] md:text-[38px] leading-[1.1] mb-4" style={{ fontFamily: "Georgia, serif" }}>New Drop</h2>
+                <Link href="/shop?collection=new" className="inline-block bg-white text-[11px] tracking-[0.1em] uppercase px-7 py-3 rounded-full font-semibold hover:bg-[#A52019] hover:text-white transition-all duration-300 shadow-md" style={{ color: "#1a1a1a" }}>
+                  Shop Now
+                </Link>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
