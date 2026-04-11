@@ -4,100 +4,175 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const sections = [
-  {
-    image: "/images/odday-hoodie-boy.jpg",
-    sub: "Premium Hoodies & Co-ords",
-    headline: "Built for Play.",
-    cta: "Shop Hoodies",
-    href: "/shop?category=hoodies",
-    align: "left" as const,
-  },
-  {
-    image: "/images/odday-plane.jpg",
-    sub: "100% Bio-Washed Cotton",
-    headline: "Plain. Simple.",
-    cta: "Shop T-Shirts",
-    href: "/shop?category=tshirts",
-    align: "left" as const,
-  },
-  {
-    image: "/images/odday-blue-set.jpg",
-    sub: "Everyday Sets for Ages 4–13",
-    headline: "Co-ords.",
-    cta: "Shop Co-ords",
-    href: "/shop?category=shorts",
-    align: "right" as const,
-  },
-  {
-    image: "/images/odday-friends.jpg",
-    sub: "First Collection 2026",
-    headline: "Mindset is Bigger\nthan Medals.",
-    cta: "Shop the Drop",
-    href: "/shop?collection=new",
-    align: "left" as const,
-  },
-  {
-    image: "/images/odday-basketball.jpg",
-    sub: "The Philosophy",
-    headline: "Effort Over\nTrophies.",
-    cta: "Our Story",
-    href: "/about",
-    align: "left" as const,
-  },
-  {
-    image: "/images/odday-car.jpg",
-    sub: "220 GSM Premium Cotton",
-    headline: "India's Finest.",
-    cta: "Explore",
-    href: "/shop",
-    align: "right" as const,
-  },
-];
-
 export default function Home2() {
   const [email, setEmail] = useState("");
 
   return (
     <>
-      {/* ===== STACKED FULL-SCREEN EDITORIAL SECTIONS ===== */}
-      {sections.map((section, i) => (
-        <section key={i} className="relative h-[100svh] overflow-hidden">
-          <Image
-            src={section.image}
-            alt={section.headline}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={i === 0}
-          />
-          <div className="absolute inset-0 bg-black/25" />
-
-          {/* Content — positioned bottom-left or bottom-right */}
-          <div className="absolute inset-0 flex items-end">
-            <div
-              className={`w-full px-7 md:px-14 pb-14 md:pb-20 max-w-[1500px] ${
-                section.align === "right" ? "ml-auto text-right" : ""
-              }`}
+      {/* ===== SECTION 1: Single full-width hero ===== */}
+      <section className="relative h-[100svh] overflow-hidden">
+        <Image
+          src="/images/odday-hoodie-boy.jpg"
+          alt="Built for Play"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-7 md:px-14 pb-14 md:pb-20">
+            <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/45 font-medium mb-3">
+              Premium Hoodies & Co-ords
+            </p>
+            <h2 className="text-[42px] md:text-[72px] lg:text-[88px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-6">
+              Built for Play.
+            </h2>
+            <Link
+              href="/shop?category=hoodies"
+              className="inline-block text-[11px] tracking-[0.14em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors"
             >
-              <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/45 font-medium mb-3">
-                {section.sub}
-              </p>
-              <h2 className="text-[42px] md:text-[72px] lg:text-[88px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-6 whitespace-pre-line">
-                {section.headline}
-              </h2>
-              <Link
-                href={section.href}
-                className="inline-block text-[11px] tracking-[0.14em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors"
-              >
-                {section.cta}
-              </Link>
-            </div>
+              Shop Hoodies
+            </Link>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
-      {/* ===== EMAIL SIGNUP — March style ===== */}
+      {/* ===== SECTION 2: Two columns ===== */}
+      <section className="grid grid-cols-1 md:grid-cols-2">
+        <Link href="/shop?category=tshirts" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-plane.jpg" alt="T-Shirts" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">100% Bio-Washed Cotton</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              Plain.<br />Simple.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop T-Shirts</span>
+          </div>
+        </Link>
+        <Link href="/shop?category=shorts" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">Everyday Sets</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              Co-ords &<br />Shorts.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Co-ords</span>
+          </div>
+        </Link>
+      </section>
+
+      {/* ===== SECTION 3: Single full-width ===== */}
+      <section className="relative h-[100svh] overflow-hidden">
+        <Image
+          src="/images/odday-friends.jpg"
+          alt="New Drop"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-7 md:px-14 pb-14 md:pb-20">
+            <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/45 font-medium mb-3">
+              First Collection 2026
+            </p>
+            <h2 className="text-[42px] md:text-[72px] lg:text-[88px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-6">
+              Mindset is Bigger<br />than Medals.
+            </h2>
+            <Link
+              href="/shop?collection=new"
+              className="inline-block text-[11px] tracking-[0.14em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors"
+            >
+              Shop the Drop
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 4: Two columns ===== */}
+      <section className="grid grid-cols-1 md:grid-cols-2">
+        <Link href="/shop" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-knit.jpg" alt="Premium Cotton" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">220 GSM Premium Cotton</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              India&apos;s<br />Finest.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Explore</span>
+          </div>
+        </Link>
+        <Link href="/shop?category=accessories" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-folded.jpg" alt="Basics" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">Bio-Washed Fabric</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              Confidence in<br />Every Detail.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Basics</span>
+          </div>
+        </Link>
+      </section>
+
+      {/* ===== SECTION 5: Single full-width ===== */}
+      <section className="relative h-[100svh] overflow-hidden">
+        <Image
+          src="/images/odday-basketball.jpg"
+          alt="The Philosophy"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-7 md:px-14 pb-14 md:pb-20">
+            <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/45 font-medium mb-3">
+              The Philosophy
+            </p>
+            <h2 className="text-[42px] md:text-[72px] lg:text-[88px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-6">
+              Effort Over<br />Trophies.
+            </h2>
+            <Link
+              href="/about"
+              className="inline-block text-[11px] tracking-[0.14em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors"
+            >
+              Our Story
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 6: Two columns ===== */}
+      <section className="grid grid-cols-1 md:grid-cols-2">
+        <Link href="/shop" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-car.jpg" alt="Streetwear" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">Less Clutter</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              More<br />Character.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop All</span>
+          </div>
+        </Link>
+        <Link href="/shop?collection=new" className="relative h-[70svh] md:h-[100svh] overflow-hidden group block">
+          <Image src="/images/odday-music.jpg" alt="New Season" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-14 left-7 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium mb-2">New Season</p>
+            <h3 className="text-[32px] md:text-[48px] font-bold tracking-[-0.03em] leading-[0.92] mb-3">
+              Summer<br />&apos;26.
+            </h3>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Discover</span>
+          </div>
+        </Link>
+      </section>
+
+      {/* ===== EMAIL SIGNUP ===== */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-[520px] mx-auto px-6 text-center">
           <h3 className="text-[22px] md:text-[28px] font-bold tracking-[-0.03em] mb-3">
