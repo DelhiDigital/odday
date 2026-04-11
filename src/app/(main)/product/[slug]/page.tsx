@@ -320,6 +320,42 @@ export default function ProductPage() {
         </div>
       </div>
 
+      {/* ===== PREMIUM BASICS — Fabric & Quality ===== */}
+      <section className="bg-white">
+        <div className="px-5 md:px-10 py-12 md:py-20 max-w-[1400px] mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-10 md:mb-14">
+              <p className="section-label">Crafted with Care</p>
+              <h2 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[1.05]">Premium Basics.</h2>
+              <p className="text-[13px] text-[#888] mt-3 max-w-lg mx-auto leading-[1.7]">
+                Every piece is crafted using long-staple cotton, bio-washed for softness, and built to last through every adventure.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+            {[
+              { image: "/images/odday-knit.jpg", title: "220 GSM Cotton", desc: "Premium long-staple cotton. Soft, breathable, durable." },
+              { image: "/images/odday-folded.jpg", title: "Bio-Washed", desc: "Pre-shrunk & enzyme-washed. Cloud-soft from day one." },
+              { image: "/images/odday-coords.jpg", title: "Thoughtful Fits", desc: "Every stitch, cut, and detail is intentional." },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.1}>
+                <div className="group">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f3] mb-4 editorial-card">
+                    <Image src={item.image} alt={item.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute bottom-5 left-5 right-5 text-white">
+                      <p className="text-[18px] md:text-[22px] font-bold tracking-[-0.02em]">{item.title}</p>
+                    </div>
+                  </div>
+                  <p className="text-[12px] text-[#888] leading-[1.6]">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== OTHERS ALSO BOUGHT ===== */}
       <section className="mt-12 md:mt-20 border-t border-[#eee]">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 py-10 md:py-14">
