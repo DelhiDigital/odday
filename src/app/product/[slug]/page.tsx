@@ -324,7 +324,7 @@ export default function ProductPage() {
       <section className="mt-12 md:mt-20 border-t border-[#eee]">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 py-10 md:py-14">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-[18px] md:text-[22px]" style={{ fontFamily: "Georgia, serif" }}>Others also bought</h2>
+            <h2 className="text-[18px] md:text-[22px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>Others also bought</h2>
             <div className="hidden md:flex gap-2">
               <button onClick={() => scrollCarousel(-1)} className="w-9 h-9 border border-[#ddd] rounded-full flex items-center justify-center hover:border-[#1a1a1a] transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="1.5"><path d="M15 19l-7-7 7-7"/></svg>
@@ -348,7 +348,7 @@ export default function ProductPage() {
       <section className="border-t border-[#eee]">
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 py-10 md:py-14">
           <ScrollReveal>
-            <h2 className="text-[18px] md:text-[22px] mb-6 md:mb-8" style={{ fontFamily: "Georgia, serif" }}>Recently viewed</h2>
+            <h2 className="text-[18px] md:text-[22px] mb-6 md:mb-8" style={{ fontFamily: "'Montserrat', sans-serif" }}>Recently viewed</h2>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {othersAlsoBought.slice(0, 4).map((p, i) => (

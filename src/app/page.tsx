@@ -8,6 +8,7 @@ import ParallaxImage from "@/components/ParallaxImage";
 import MagneticButton from "@/components/MagneticButton";
 import DragCarousel from "@/components/DragCarousel";
 import Counter from "@/components/Counter";
+import PuzzleReveal from "@/components/PuzzleReveal";
 
 const newDropProducts = [
   { id: "mindset-tee-white", name: "Mindset Oversized Tee", price: 1299, originalPrice: 1599, image: "/images/product-1.jpg", tag: "New" },
@@ -42,7 +43,7 @@ export default function Home() {
             text="Mindset is Bigger than Medals"
             tag="h1"
             className="text-[32px] md:text-[52px] font-light leading-[1.08] mb-6 text-white"
-            style={{ fontFamily: "Georgia, serif" }}
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
             delay={0.4}
           />
           <ScrollReveal delay={0.8}>
@@ -101,7 +102,7 @@ export default function Home() {
         <div className="px-5 md:px-10 max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-10">
-              <TextReveal text="New Drop" tag="h2" className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }} />
+              <TextReveal text="New Drop" tag="h2" className="text-[28px] md:text-[36px]" style={{ fontFamily: "'Montserrat', sans-serif" }} />
             </div>
           </ScrollReveal>
         </div>
@@ -137,7 +138,7 @@ export default function Home() {
               text="Childhood is a journey, not a competition."
               tag="h2"
               className="text-[24px] md:text-[38px] leading-[1.12] mb-6 text-white"
-              style={{ fontFamily: "Georgia, serif" }}
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
               delay={0.2}
             />
             <ScrollReveal delay={0.6}>
@@ -154,7 +155,7 @@ export default function Home() {
         <div className="px-5 md:px-10 py-12 md:py-16 max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8 md:mb-10">
-              <TextReveal text="Bestsellers" tag="h2" className="text-[28px] md:text-[36px]" style={{ fontFamily: "Georgia, serif" }} />
+              <TextReveal text="Bestsellers" tag="h2" className="text-[28px] md:text-[36px]" style={{ fontFamily: "'Montserrat', sans-serif" }} />
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
@@ -172,6 +173,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== PUZZLE REVEAL — Interactive discount game ===== */}
+      <PuzzleReveal />
+
       {/* ===== BRAND STORY — with text reveal quote ===== */}
       <section className="px-5 md:px-10 py-14 md:py-24 max-w-[1400px] mx-auto">
         <div className="grid md:grid-cols-2 gap-6 md:gap-14 items-center">
@@ -188,7 +192,7 @@ export default function Home() {
               text="At ODDAY, you'll find children's clothing created with creativity, love, and intention."
               tag="h2"
               className="text-[24px] md:text-[32px] mb-6 leading-[1.3]"
-              style={{ fontFamily: "Georgia, serif" }}
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
               delay={0.15}
             />
             <ScrollReveal delay={0.4}>
@@ -248,7 +252,7 @@ export default function Home() {
       <section className="relative border-y border-[#e8e8e8] py-6 md:py-8 bg-[#f5f4f0] overflow-hidden">
         <div className="flex items-center justify-center gap-6 md:gap-10">
           <PuzzleDeco size={24} rotate={-15} opacity={0.12} />
-          <p className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-center" style={{ fontFamily: "Georgia, serif" }}>Elevated Kidswear — Premium Quality — Built for Play</p>
+          <p className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-center" style={{ fontFamily: "'Montserrat', sans-serif" }}>Elevated Kidswear — Premium Quality — Built for Play</p>
           <PuzzleDeco size={24} rotate={20} opacity={0.12} />
         </div>
         <PuzzleDeco size={50} rotate={-30} opacity={0.04} className="absolute -left-4 top-1/2 -translate-y-1/2" />
@@ -265,7 +269,7 @@ export default function Home() {
         <div className="px-5 md:px-10 max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-8">
-              <TextReveal text="@odday.in" tag="h2" className="text-[24px] md:text-[30px]" style={{ fontFamily: "Georgia, serif" }} />
+              <TextReveal text="@odday.in" tag="h2" className="text-[24px] md:text-[30px]" style={{ fontFamily: "'Montserrat', sans-serif" }} />
               <p className="text-[12px] text-[#999] mt-2">Follow the journey</p>
             </div>
           </ScrollReveal>
@@ -293,7 +297,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
           {["Effort", "Confidence", "Character", "Mindset", "Growth", "Play"].map((word, i) => (
             <span key={word} className="flex items-center gap-4 md:gap-8">
-              <span className="text-[11px] tracking-[0.15em] uppercase" style={{ fontFamily: "Georgia, serif" }}>{word}</span>
+              <span className="text-[11px] tracking-[0.15em] uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>{word}</span>
               {i < 5 && <PuzzleDeco size={14} rotate={i * 30} opacity={0.2} color="#A52019" />}
             </span>
           ))}

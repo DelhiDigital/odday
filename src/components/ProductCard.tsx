@@ -64,7 +64,7 @@ export default function ProductCard({ id, name, price, originalPrice, image, hov
 
       {/* Info — Sommer style: product name + price below */}
       <div className="text-center space-y-1">
-        <h3 className="text-[13px] tracking-[0.02em] group-hover:text-[#A52019] transition-colors" style={{ fontFamily: "Georgia, serif" }}>
+        <h3 className="text-[13px] tracking-[0.02em] group-hover:text-[#A52019] transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           {name}
         </h3>
         <div className="flex items-center justify-center gap-2">

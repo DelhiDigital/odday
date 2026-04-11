@@ -30,8 +30,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-weight: 400;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.2;
 }
@@ -82,17 +82,37 @@ img { display: block; max-width: 100%; }
   color: #fff;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 14px 36px;
   border-radius: 6px;
   transition: all 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
 }
 .btn-primary:hover {
   background: #8a1a14;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(165, 32, 25, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(165, 32, 25, 0.25);
+}
+
+/* Red accent line */
+.red-line {
+  width: 40px;
+  height: 3px;
+  background: #A52019;
+  border-radius: 2px;
+}
+
+/* Red dot accent */
+.red-dot::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #A52019;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 .btn-outline {
@@ -117,20 +137,20 @@ img { display: block; max-width: 100%; }
 
 /* ===== SECTION STYLING ===== */
 .section-label {
-  font-family: 'Georgia', serif;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: #A52019;
-  font-weight: 400;
-  font-style: italic;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 6px;
   display: block;
 }
 
 .section-title {
-  font-family: 'Georgia', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(24px, 3.5vw, 42px);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.15;
   color: #1a1a1a;
