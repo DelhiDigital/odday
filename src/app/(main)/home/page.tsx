@@ -27,30 +27,30 @@ export default function Home() {
       {/* ===== HERO SLIDESHOW — March-style full-bleed with bottom-aligned text ===== */}
       <HeroSlideshow />
 
-      {/* ===== SECTION: Product story blocks — March style alternating full-bleed ===== */}
-
-      {/* Block 1: Side-by-side — full portrait image + text */}
-      <section className="grid grid-cols-1 md:grid-cols-2 bg-[#f0efed]">
-        <div className="relative aspect-[4/5] md:aspect-auto md:h-auto overflow-hidden editorial-card">
-          <Image
-            src="/images/odday-hoodie-boy.jpg"
-            alt="Premium Hoodies"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-        <div className="flex items-end px-6 md:px-12 py-12 md:py-16">
-          <ScrollReveal>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#888] font-medium mb-3">Premium 220 GSM Cotton</p>
-            <h2 className="text-[36px] md:text-[52px] lg:text-[64px] font-bold tracking-[-0.04em] leading-[0.95] text-[#111] mb-6">
-              Warm.<br />Comfortable.
-            </h2>
-            <Link href="/shop?category=hoodies" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-[#111] border-b border-[#111]/40 pb-1.5 hover:border-[#111] transition-colors">
-              Shop Hoodies
-            </Link>
-          </ScrollReveal>
-        </div>
+      {/* ===== SPLIT CATEGORIES — two portrait images side by side ===== */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-[2px] bg-[#e5e5e5]">
+        <Link href="/shop?category=hoodies" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
+          <Image src="/images/odday-hoodie-boy.jpg" alt="Hoodies" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">Premium 220 GSM Cotton</p>
+            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
+              Built for<br />Play.
+            </h3>
+            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Hoodies</span>
+          </div>
+        </Link>
+        <Link href="/shop?category=shorts" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
+          <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">Everyday Sets</p>
+            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
+              Co-ords &<br />Shorts.
+            </h3>
+            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Co-ords</span>
+          </div>
+        </Link>
       </section>
 
       {/* ===== NEW ARRIVALS — Clean 4-column grid ===== */}
@@ -80,32 +80,6 @@ export default function Home() {
             <Link href="/shop?collection=new" className="btn-outline text-[10px] px-10">View All</Link>
           </ScrollReveal>
         </div>
-      </section>
-
-      {/* Block 2: Split — two portrait images side by side */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-[2px] bg-[#e5e5e5]">
-        <Link href="/shop?category=tshirts" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
-          <Image src="/images/odday-plane.jpg" alt="T-Shirts" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
-            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">100% Bio-Washed</p>
-            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
-              The ODDAY<br />Tee.
-            </h3>
-            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop T-Shirts</span>
-          </div>
-        </Link>
-        <Link href="/shop?category=shorts" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
-          <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
-            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">Everyday Sets</p>
-            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
-              Co-ords &<br />Shorts.
-            </h3>
-            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Co-ords</span>
-          </div>
-        </Link>
       </section>
 
       {/* ===== BESTSELLERS ===== */}
