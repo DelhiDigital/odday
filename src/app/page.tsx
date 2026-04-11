@@ -2,12 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ScrollReveal";
-import TextReveal from "@/components/TextReveal";
-import ParallaxImage from "@/components/ParallaxImage";
-import MagneticButton from "@/components/MagneticButton";
-import DragCarousel from "@/components/DragCarousel";
-import Counter from "@/components/Counter";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import Marquee from "@/components/Marquee";
+import Counter from "@/components/Counter";
+import DragCarousel from "@/components/DragCarousel";
 
 const newDropProducts = [
   { id: "mindset-tee-white", name: "Mindset Oversized Tee", price: 1299, originalPrice: 1599, image: "/images/product-1.jpg", tag: "New" },
@@ -21,121 +19,52 @@ const bestSellers = [
   { id: "play-shorts-olive", name: "Play Skater Jeans", price: 1499, image: "/images/product-6.jpg", hoverImage: "/images/product-6-hover.jpg" },
   { id: "character-tee-sand", name: "Character Long Tee", price: 1299, image: "/images/product-7.jpg", hoverImage: "/images/product-7-hover.jpg" },
   { id: "effort-joggers-gray", name: "Effort Sweatshirt", price: 1599, originalPrice: 1899, image: "/images/product-8.jpg", hoverImage: "/images/product-8-hover.jpg" },
-  { id: "bobbie-pants", name: "Bobbie Pants", price: 1399, image: "/images/product-9.jpg", hoverImage: "/images/product-9-hover.jpg" },
-  { id: "kind-people-crew", name: "Mindset Crew", price: 1799, image: "/images/product-10.jpg", hoverImage: "/images/product-10-hover.jpg" },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* ===== HERO — Full viewport, editorial with large brand text ===== */}
-      <section className="relative h-[100svh] overflow-hidden bg-[#111]">
-        <ParallaxImage src="/images/odday-friends.jpg" alt="ODDAY — First Collection" speed={0.15} className="absolute inset-0 opacity-70" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+      {/* ===== HERO SLIDESHOW — March-style full-bleed with bottom-aligned text ===== */}
+      <HeroSlideshow />
 
-        {/* Large ODDAY text — SKIMS/ZARA style */}
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="text-center px-5">
-            <ScrollReveal delay={0.3}>
-              <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-white/70 font-medium mb-6">
-                First Collection 2026
-              </p>
-            </ScrollReveal>
-            <TextReveal
-              text="ODDAY"
-              tag="h1"
-              className="display-text text-[18vw] md:text-[14vw] lg:text-[12vw] text-white"
-              delay={0.5}
-            />
-            <ScrollReveal delay={0.9}>
-              <p className="text-[12px] md:text-[14px] tracking-[0.08em] text-white/60 font-light mt-4 mb-8 max-w-md mx-auto">
-                Elevated Kidswear. Premium Quality. Built for Play.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={1.1}>
-              <MagneticButton href="/shop" className="inline-block">
-                <span className="btn-outline-white">
-                  Shop Collection
-                </span>
-              </MagneticButton>
-            </ScrollReveal>
-          </div>
-        </div>
+      {/* ===== SECTION: Product story blocks — March style alternating full-bleed ===== */}
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 animate-fade-in" style={{ animationDelay: "1.8s" }}>
-          <span className="text-[8px] tracking-[0.3em] uppercase text-white/40">Scroll</span>
-          <div className="w-[1px] h-10 bg-white/15 relative overflow-hidden">
-            <div className="w-full h-1/2 bg-white/50 absolute animate-[float_2s_ease-in-out_infinite]" />
+      {/* Block 1: Full-width image + overlay text — like March's "Plain. Simple." */}
+      <section className="relative h-[70vh] md:h-[85vh] overflow-hidden group">
+        <Image
+          src="/images/odday-hoodie-boy.jpg"
+          alt="Premium Hoodies"
+          fill
+          className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-6 md:px-12 pb-12 md:pb-16 max-w-[1500px] mx-auto">
+            <ScrollReveal>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-medium mb-3">Premium 220 GSM Cotton</p>
+              <h2 className="text-[36px] md:text-[60px] lg:text-[72px] font-bold tracking-[-0.04em] leading-[0.95] text-white mb-6">
+                Warm.<br />Comfortable.
+              </h2>
+              <Link href="/shop?category=hoodies" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors">
+                Shop Hoodies
+              </Link>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ===== MARQUEE DIVIDER ===== */}
-      <Marquee text="Mindset is Bigger than Medals" speed={35} />
-
-      {/* ===== EDITORIAL COLLECTION GRID — Zara-inspired ===== */}
-      <section className="px-4 md:px-8 py-12 md:py-20 max-w-[1500px] mx-auto">
-        <ScrollReveal>
-          <div className="flex items-end justify-between mb-8 md:mb-12">
-            <div>
-              <span className="section-label">Collections</span>
-              <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-0.03em] leading-[1.05]">New In</h2>
-            </div>
-            <Link href="/shop" className="text-[11px] tracking-[0.1em] uppercase font-medium link-underline pb-0.5 hidden md:inline-block">
-              View All
-            </Link>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {/* Large featured image */}
-          <ScrollReveal className="col-span-2 md:col-span-1 md:row-span-2">
-            <Link href="/shop?collection=new" className="editorial-card relative block aspect-[3/4] md:aspect-auto md:h-full bg-[#f5f5f3] overflow-hidden group">
-              <Image src="/images/odday-plane.jpg" alt="New Collection" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-[20px] md:text-[28px] font-bold tracking-[-0.02em] mb-1">New Drop</p>
-                <p className="text-[11px] tracking-[0.08em] uppercase opacity-60">Explore Collection</p>
-              </div>
-            </Link>
-          </ScrollReveal>
-
-          {/* Top right */}
-          <ScrollReveal delay={0.1}>
-            <Link href="/shop?category=tshirts" className="editorial-card relative block aspect-[4/3] bg-[#f5f5f3] overflow-hidden group">
-              <Image src="/images/odday-basketball.jpg" alt="T-Shirts" fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              <div className="absolute bottom-5 left-5 text-white">
-                <p className="text-[14px] md:text-[16px] font-semibold tracking-[-0.01em]">T-Shirts</p>
-              </div>
-            </Link>
-          </ScrollReveal>
-
-          {/* Bottom right */}
-          <ScrollReveal delay={0.2}>
-            <Link href="/shop?category=shorts" className="editorial-card relative block aspect-[4/3] bg-[#f5f5f3] overflow-hidden group">
-              <Image src="/images/odday-jersey.jpg" alt="Streetwear" fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              <div className="absolute bottom-5 left-5 text-white">
-                <p className="text-[14px] md:text-[16px] font-semibold tracking-[-0.01em]">Streetwear</p>
-              </div>
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ===== NEW ARRIVALS — Clean grid ===== */}
+      {/* ===== NEW ARRIVALS — Clean 4-column grid ===== */}
       <section className="bg-white">
-        <div className="px-4 md:px-8 py-12 md:py-20 max-w-[1500px] mx-auto">
+        <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1500px] mx-auto">
           <ScrollReveal>
-            <div className="flex items-end justify-between mb-8 md:mb-12">
+            <div className="flex items-end justify-between mb-10 md:mb-14">
               <div>
                 <span className="section-label">Just Landed</span>
-                <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-0.03em] leading-[1.05]">New Arrivals</h2>
+                <h2 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[1.05]">New Arrivals</h2>
               </div>
               <Link href="/shop?collection=new" className="text-[11px] tracking-[0.1em] uppercase font-medium link-underline pb-0.5 hidden md:inline-block">
-                Shop All
+                View All
               </Link>
             </div>
           </ScrollReveal>
@@ -149,53 +78,53 @@ export default function Home() {
           </div>
 
           <ScrollReveal className="text-center mt-10 md:hidden">
-            <Link href="/shop?collection=new" className="btn-outline text-[10px] px-10">
-              View All
-            </Link>
+            <Link href="/shop?collection=new" className="btn-outline text-[10px] px-10">View All</Link>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== EDITORIAL BANNER — Full bleed with text ===== */}
-      <section className="relative h-[60vh] md:h-[80vh] overflow-hidden">
-        <ParallaxImage src="/images/odday-basketball.jpg" alt="The Philosophy" speed={0.12} className="absolute inset-0" />
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-0 flex items-center justify-center text-center px-5 z-10">
-          <div className="max-w-2xl">
-            <ScrollReveal delay={0.1}>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-medium block mb-5">The Philosophy</span>
-            </ScrollReveal>
-            <TextReveal
-              text="Childhood is a journey, not a competition."
-              tag="h2"
-              className="text-[28px] md:text-[48px] font-bold tracking-[-0.03em] leading-[1.1] text-white mb-8"
-              delay={0.2}
-            />
-            <ScrollReveal delay={0.7}>
-              <MagneticButton href="/about">
-                <span className="btn-outline-white">Our Story</span>
-              </MagneticButton>
-            </ScrollReveal>
+      {/* Block 2: Split — March style two images side by side with text overlays */}
+      <section className="grid grid-cols-1 md:grid-cols-2">
+        <Link href="/shop?category=tshirts" className="relative h-[60vh] md:h-[80vh] overflow-hidden group block editorial-card">
+          <Image src="/images/odday-plane.jpg" alt="T-Shirts" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">100% Bio-Washed</p>
+            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
+              The ODDAY<br />Tee.
+            </h3>
+            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop T-Shirts</span>
           </div>
-        </div>
+        </Link>
+        <Link href="/shop?category=shorts" className="relative h-[60vh] md:h-[80vh] overflow-hidden group block editorial-card">
+          <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 font-medium mb-2">Everyday Sets</p>
+            <h3 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[0.95] mb-3">
+              Co-ords &<br />Shorts.
+            </h3>
+            <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop Co-ords</span>
+          </div>
+        </Link>
       </section>
 
       {/* ===== BESTSELLERS ===== */}
       <section className="bg-[#f5f5f3]">
-        <div className="px-4 md:px-8 py-12 md:py-20 max-w-[1500px] mx-auto">
+        <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1500px] mx-auto">
           <ScrollReveal>
-            <div className="flex items-end justify-between mb-8 md:mb-12">
+            <div className="flex items-end justify-between mb-10 md:mb-14">
               <div>
                 <span className="section-label">Most Loved</span>
-                <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-0.03em] leading-[1.05]">Bestsellers</h2>
+                <h2 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[1.05]">Bestsellers</h2>
               </div>
               <Link href="/shop?sort=best-sellers" className="text-[11px] tracking-[0.1em] uppercase font-medium link-underline pb-0.5 hidden md:inline-block">
-                Shop All
+                View All
               </Link>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {bestSellers.map((p, i) => (
               <ScrollReveal key={p.id} delay={i * 0.06}>
                 <ProductCard {...p} />
@@ -204,40 +133,66 @@ export default function Home() {
           </div>
 
           <ScrollReveal className="text-center mt-10 md:hidden">
-            <Link href="/shop?sort=best-sellers" className="btn-outline text-[10px] px-10">
-              View All
-            </Link>
+            <Link href="/shop?sort=best-sellers" className="btn-outline text-[10px] px-10">View All</Link>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== FABRIC & QUALITY — Premium details section ===== */}
+      {/* Block 3: Full-bleed editorial — "The Philosophy" */}
+      <section className="relative h-[70vh] md:h-[85vh] overflow-hidden group">
+        <Image
+          src="/images/odday-basketball.jpg"
+          alt="The Philosophy"
+          fill
+          className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-6 md:px-12 pb-12 md:pb-16 max-w-[1500px] mx-auto">
+            <ScrollReveal>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-medium mb-3">The Philosophy</p>
+              <h2 className="text-[36px] md:text-[60px] lg:text-[72px] font-bold tracking-[-0.04em] leading-[0.95] text-white mb-6">
+                Childhood is<br />a Journey.
+              </h2>
+              <Link href="/about" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors">
+                Our Story
+              </Link>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FABRIC / QUALITY — March-style content blocks ===== */}
       <section className="bg-white">
-        <div className="px-4 md:px-8 py-12 md:py-20 max-w-[1500px] mx-auto">
+        <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1500px] mx-auto">
           <ScrollReveal>
-            <div className="text-center mb-10 md:mb-16">
-              <span className="section-label">Crafted with Care</span>
-              <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-0.03em] leading-[1.05]">Premium Basics.</h2>
+            <div className="text-center mb-12 md:mb-16">
+              <span className="section-label">The Details</span>
+              <h2 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[1.05]">Premium Basics.</h2>
+              <p className="text-[13px] text-[#888] mt-3 max-w-lg mx-auto leading-[1.7]">
+                Every piece is crafted using long-staple cotton, bio-washed for softness, and built to last through every adventure.
+              </p>
             </div>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-4 md:gap-5">
             {[
-              { image: "/images/odday-knit.jpg", title: "Premium Cotton", desc: "220 GSM long-staple cotton. Soft, breathable, built to last." },
-              { image: "/images/odday-folded.jpg", title: "Bio-Washed Fabric", desc: "Pre-shrunk & enzyme-washed for cloud-soft comfort from day one." },
-              { image: "/images/odday-coords.jpg", title: "Thoughtful Design", desc: "Every stitch, cut, and detail is intentional. No shortcuts." },
+              { image: "/images/odday-knit.jpg", title: "220 GSM Cotton", desc: "Premium long-staple cotton. Soft, breathable, durable." },
+              { image: "/images/odday-folded.jpg", title: "Bio-Washed", desc: "Pre-shrunk & enzyme-washed. Cloud-soft from day one." },
+              { image: "/images/odday-coords.jpg", title: "Thoughtful Fits", desc: "Every stitch, cut, and detail is intentional." },
             ].map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.1}>
-                <div className="editorial-card group">
-                  <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f3] mb-5">
+                <Link href="/shop" className="editorial-card group block">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f3] mb-4">
                     <Image src={item.image} alt={item.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <p className="text-[20px] md:text-[24px] font-bold tracking-[-0.02em] mb-1">{item.title}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="absolute bottom-5 left-5 right-5 text-white">
+                      <p className="text-[18px] md:text-[22px] font-bold tracking-[-0.02em]">{item.title}</p>
                     </div>
                   </div>
-                  <p className="text-[13px] text-[#666] leading-[1.7]">{item.desc}</p>
-                </div>
+                  <p className="text-[12px] text-[#888] leading-[1.6]">{item.desc}</p>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -245,8 +200,8 @@ export default function Home() {
       </section>
 
       {/* ===== STATS BAR ===== */}
-      <section className="border-y border-[#e5e5e5] bg-white">
-        <div className="max-w-[1500px] mx-auto px-4 md:px-8 py-10 md:py-14">
+      <section className="border-y border-[#e5e5e5] bg-[#f5f5f3]">
+        <div className="max-w-[1500px] mx-auto px-6 md:px-12 py-10 md:py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { end: 220, suffix: " GSM", label: "Premium Cotton" },
@@ -263,67 +218,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SPLIT EDITORIAL — Category panels ===== */}
-      <section className="grid grid-cols-2">
-        <ScrollReveal className="relative aspect-[3/4] overflow-hidden group editorial-card">
-          <Link href="/shop?category=hoodies" className="block h-full">
-            <Image src="/images/odday-hoodie-boy.jpg" alt="Hoodies" fill className="object-cover" sizes="50vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
-              <p className="text-[18px] md:text-[28px] font-bold tracking-[-0.02em]">Hoodies</p>
-              <p className="text-[10px] md:text-[11px] tracking-[0.1em] uppercase opacity-50 mt-1">Shop Now</p>
-            </div>
-          </Link>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1} className="relative aspect-[3/4] overflow-hidden group editorial-card">
-          <Link href="/shop?category=shorts" className="block h-full">
-            <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover" sizes="50vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
-              <p className="text-[18px] md:text-[28px] font-bold tracking-[-0.02em]">Co-ords</p>
-              <p className="text-[10px] md:text-[11px] tracking-[0.1em] uppercase opacity-50 mt-1">Shop Now</p>
-            </div>
-          </Link>
-        </ScrollReveal>
-      </section>
-
-      {/* ===== BRAND STORY ===== */}
-      <section className="bg-white">
-        <div className="px-4 md:px-8 py-14 md:py-24 max-w-[1500px] mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+      {/* Block 4: Brand story — full-bleed image */}
+      <section className="relative h-[60vh] md:h-[75vh] overflow-hidden group">
+        <Image
+          src="/images/odday-car.jpg"
+          alt="Our Story"
+          fill
+          className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6 z-10">
+          <div className="max-w-2xl">
             <ScrollReveal>
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#f5f5f3] editorial-card">
-                <Image src="/images/odday-car.jpg" alt="ODDAY Story" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-              </div>
+              <span className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-medium block mb-4">Our Story</span>
+              <h2 className="text-[32px] md:text-[52px] lg:text-[64px] font-bold tracking-[-0.04em] leading-[0.95] text-white mb-4">
+                Less Clutter.<br />More Character.
+              </h2>
+              <p className="text-[13px] text-white/50 leading-[1.7] mb-8 max-w-md mx-auto">
+                Designed for kids aged 4–13 who build confidence and everyday wins.
+              </p>
+              <Link href="/about" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors">
+                About ODDAY
+              </Link>
             </ScrollReveal>
-            <div className="py-4 md:py-8">
-              <ScrollReveal>
-                <span className="section-label">Our Story</span>
-              </ScrollReveal>
-              <TextReveal
-                text="Children's clothing created with creativity, love, and intention."
-                tag="h2"
-                className="text-[24px] md:text-[36px] font-bold tracking-[-0.03em] leading-[1.15] mb-6"
-                delay={0.15}
-              />
-              <ScrollReveal delay={0.4}>
-                <p className="text-[13px] text-[#666] leading-[1.9] mb-8 max-w-md">
-                  We believe childhood is not a competition — it&apos;s a journey. Every piece is crafted using
-                  premium, long-lasting fabrics. Designed for kids aged 4–13 who build character, confidence,
-                  and everyday wins. Less clutter, more character.
-                </p>
-                <MagneticButton href="/about">
-                  <span className="btn-outline text-[10px] px-10">About ODDAY</span>
-                </MagneticButton>
-              </ScrollReveal>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== INSTAGRAM — Clean gallery ===== */}
-      <section className="border-t border-[#e5e5e5]">
-        <div className="px-4 md:px-8 py-12 md:py-16 max-w-[1500px] mx-auto">
+      {/* ===== INSTAGRAM ===== */}
+      <section className="bg-white">
+        <div className="px-6 md:px-12 py-12 md:py-16 max-w-[1500px] mx-auto">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-8">
               <div>
@@ -337,7 +262,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
 
-        <DragCarousel className="gap-2 md:gap-3 px-4 md:px-8 pb-12 md:pb-16">
+        <DragCarousel className="gap-2 md:gap-3 px-6 md:px-12 pb-14 md:pb-20">
           {["/images/odday-skate-girl.jpg", "/images/odday-three-kids.jpg", "/images/odday-skate-boy.jpg", "/images/odday-running.jpg", "/images/odday-car.jpg", "/images/odday-music.jpg"].map((src, i) => (
             <div key={i} className="shrink-0 w-[65vw] md:w-[320px]">
               <a href="#" className="editorial-card relative aspect-square overflow-hidden group block bg-[#f5f5f3]">
@@ -353,6 +278,9 @@ export default function Home() {
           <div className="shrink-0 w-5" />
         </DragCarousel>
       </section>
+
+      {/* ===== MARQUEE ===== */}
+      <Marquee text="Elevated Kidswear — Premium Quality — Built for Play" speed={35} />
     </>
   );
 }
