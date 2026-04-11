@@ -12,7 +12,7 @@ export default function Home2() {
       {/* ===== SECTION 1: Single full-width hero ===== */}
       <section className="relative h-[100svh] overflow-hidden">
         <Image
-          src="/images/odday-hoodie-boy.jpg"
+          src="/images/odday-skate-boy.jpg"
           alt="Built for Play"
           fill
           className="object-cover"
