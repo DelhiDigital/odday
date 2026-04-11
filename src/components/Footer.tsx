@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -32,7 +33,10 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <span className="text-[18px] font-bold tracking-[0.2em] block mb-4">ODDAY</span>
+            <div className="flex items-center gap-2 mb-4">
+              <Image src="/logos/ODDAY Logomark.png" alt="ODDAY" width={28} height={28} />
+              <Image src="/logos/ODDAY Wordmark.png" alt="ODDAY" width={80} height={20} />
+            </div>
             <p className="text-[11px] text-[#999] leading-[1.7] mb-4">
               Premium kids streetwear designed for ages 4–13. Elevated, minimal, built for play.
             </p>

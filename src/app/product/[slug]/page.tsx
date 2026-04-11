@@ -112,31 +112,25 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Desktop: Main image + thumbnail row below */}
+            {/* Desktop: 1 main image + 2-col grid below (5 total) */}
             <div className="hidden md:block">
               {/* Main Image */}
-              <div className="relative aspect-[3/4] bg-[#f5f4f0] overflow-hidden cursor-zoom-in group mb-2">
+              <div className="relative aspect-[3/4] bg-[#f5f4f0] overflow-hidden cursor-zoom-in group mb-1.5">
                 <Image
-                  src={currentImages[activeImg]}
+                  src={currentImages[0]}
                   alt="Product"
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   sizes="55vw"
                   priority
                 />
               </div>
-              {/* Thumbnail Row */}
-              <div className="flex gap-1.5">
-                {currentImages.map((src, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImg(i)}
-                    className={`relative flex-1 aspect-[3/4] overflow-hidden rounded-sm border-2 transition-all duration-200 hover:opacity-90 ${
-                      activeImg === i ? "border-[#1a1a1a]" : "border-transparent opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <Image src={src} alt="" fill className="object-cover" sizes="12vw" />
-                  </button>
+              {/* 2-column grid below */}
+              <div className="grid grid-cols-2 gap-1.5">
+                {currentImages.slice(1, 5).map((src, i) => (
+                  <div key={i} className="relative aspect-[3/4] bg-[#f5f4f0] overflow-hidden cursor-zoom-in group">
+                    <Image src={src} alt={`View ${i + 2}`} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="27vw" />
+                  </div>
                 ))}
               </div>
             </div>

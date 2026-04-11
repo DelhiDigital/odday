@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import Marquee from "@/components/Marquee";
+import PuzzleDeco from "@/components/PuzzleDeco";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -244,8 +244,16 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-      {/* ===== MARQUEE ===== */}
-      <Marquee text="Elevated Kidswear — Premium Quality — Ages 4 to 13 — Mindset over Medals — Built for Play" />
+      {/* ===== PUZZLE DIVIDER ===== */}
+      <section className="relative border-y border-[#e8e8e8] py-6 md:py-8 bg-[#f5f4f0] overflow-hidden">
+        <div className="flex items-center justify-center gap-6 md:gap-10">
+          <PuzzleDeco size={24} rotate={-15} opacity={0.12} />
+          <p className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-center" style={{ fontFamily: "Georgia, serif" }}>Elevated Kidswear — Premium Quality — Built for Play</p>
+          <PuzzleDeco size={24} rotate={20} opacity={0.12} />
+        </div>
+        <PuzzleDeco size={50} rotate={-30} opacity={0.04} className="absolute -left-4 top-1/2 -translate-y-1/2" />
+        <PuzzleDeco size={60} rotate={45} opacity={0.04} className="absolute -right-4 top-1/2 -translate-y-1/2" />
+      </section>
 
       {/* ===== CONFIDENCE BANNER — full width parallax ===== */}
       <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
@@ -280,8 +288,17 @@ export default function Home() {
         </DragCarousel>
       </section>
 
-      {/* ===== SECOND MARQUEE ===== */}
-      <Marquee text="Effort — Confidence — Character — Mindset — Growth — Play — Own It" speed={25} />
+      {/* ===== PUZZLE FOOTER DIVIDER ===== */}
+      <section className="relative border-y border-[#e8e8e8] py-6 md:py-8 bg-[#f5f4f0] overflow-hidden">
+        <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
+          {["Effort", "Confidence", "Character", "Mindset", "Growth", "Play"].map((word, i) => (
+            <span key={word} className="flex items-center gap-4 md:gap-8">
+              <span className="text-[11px] tracking-[0.15em] uppercase" style={{ fontFamily: "Georgia, serif" }}>{word}</span>
+              {i < 5 && <PuzzleDeco size={14} rotate={i * 30} opacity={0.2} color="#A52019" />}
+            </span>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

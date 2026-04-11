@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import NextImage from "next/image";
 import { useState, useEffect } from "react";
 
 const mobileCategories = [
@@ -53,11 +53,10 @@ export default function Header() {
       >
         {/* Desktop */}
         <div className="hidden md:flex items-center h-[52px] px-6 lg:px-10 max-w-[1600px] mx-auto">
-          {/* Logo — left aligned like H&M */}
-          <Link href="/" className="mr-10 shrink-0">
-            <span className="text-[22px] font-bold tracking-[0.08em]" style={{ fontFamily: "Georgia, serif" }}>
-              ODDAY
-            </span>
+          {/* Logo — real logomark + wordmark */}
+          <Link href="/" className="mr-10 shrink-0 flex items-center gap-2">
+            <NextImage src="/logos/ODDAY Logomark.png" alt="ODDAY" width={28} height={28} priority />
+            <NextImage src="/logos/ODDAY Wordmark.png" alt="ODDAY" width={80} height={20} priority className="hidden lg:block" />
           </Link>
 
           {/* Nav — inline like H&M */}
@@ -117,8 +116,9 @@ export default function Header() {
             )}
           </button>
 
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-[19px] font-bold tracking-[0.08em]" style={{ fontFamily: "Georgia, serif" }}>ODDAY</span>
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            <NextImage src="/logos/ODDAY Logomark.png" alt="ODDAY" width={24} height={24} priority />
+            <NextImage src="/logos/ODDAY Wordmark.png" alt="ODDAY" width={68} height={17} priority />
           </Link>
 
           <div className="flex items-center gap-4">
@@ -171,7 +171,7 @@ export default function Header() {
                     style={{ animationDelay: `${i * 0.05}s` }}
                   >
                     <div className="relative w-[80px] h-[80px] rounded-md overflow-hidden bg-[#f5f4f0] shrink-0">
-                      <Image src={cat.image} alt={cat.label} fill className="object-cover" sizes="80px" />
+                      <NextImage src={cat.image} alt={cat.label} fill className="object-cover" sizes="80px" />
                     </div>
                     <div>
                       <p className="text-[13px] font-semibold tracking-[0.02em] uppercase">{cat.label}</p>
@@ -186,7 +186,7 @@ export default function Header() {
               <div className="px-5 py-6">
                 <Link href="/shop?collection=new" onClick={() => setMenuOpen(false)} className="block mb-4">
                   <div className="relative aspect-[16/9] rounded-lg overflow-hidden mb-3">
-                    <Image src="/images/hero-2.jpg" alt="New Drop" fill className="object-cover" sizes="100vw" />
+                    <NextImage src="/images/hero-2.jpg" alt="New Drop" fill className="object-cover" sizes="100vw" />
                   </div>
                   <p className="text-[14px] font-semibold">First Collection 2026</p>
                   <p className="text-[12px] text-[#999]">Mindset is Bigger than Medals</p>
