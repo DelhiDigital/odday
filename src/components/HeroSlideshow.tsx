@@ -21,21 +21,14 @@ const slides: Slide[] = [
     href: "/shop?collection=new",
   },
   {
-    image: "/images/odday-hoodie-boy.jpg",
-    headline: "Built for\nPlay.",
-    sub: "Premium Hoodies & Co-ords",
-    cta: "Shop Hoodies",
-    href: "/shop?category=hoodies",
-  },
-  {
-    image: "/images/odday-plane.jpg",
+    image: "/images/odday-music.jpg",
     headline: "Elevated\nKidswear.",
     sub: "220 GSM Premium Cotton",
     cta: "Explore Collection",
     href: "/shop",
   },
   {
-    image: "/images/odday-basketball.jpg",
+    image: "/images/odday-skate-boy.jpg",
     headline: "Effort Over\nTrophies.",
     sub: "Streetwear for Ages 4–13",
     cta: "Shop Now",

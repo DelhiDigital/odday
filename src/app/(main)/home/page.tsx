@@ -29,28 +29,27 @@ export default function Home() {
 
       {/* ===== SECTION: Product story blocks — March style alternating full-bleed ===== */}
 
-      {/* Block 1: Full-width image + overlay text — like March's "Plain. Simple." */}
-      <section className="relative h-[70vh] md:h-[85vh] overflow-hidden group">
-        <Image
-          src="/images/odday-hoodie-boy.jpg"
-          alt="Premium Hoodies"
-          fill
-          className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="w-full px-6 md:px-12 pb-12 md:pb-16 max-w-[1500px] mx-auto">
-            <ScrollReveal>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-medium mb-3">Premium 220 GSM Cotton</p>
-              <h2 className="text-[36px] md:text-[60px] lg:text-[72px] font-bold tracking-[-0.04em] leading-[0.95] text-white mb-6">
-                Warm.<br />Comfortable.
-              </h2>
-              <Link href="/shop?category=hoodies" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors">
-                Shop Hoodies
-              </Link>
-            </ScrollReveal>
-          </div>
+      {/* Block 1: Side-by-side — full portrait image + text */}
+      <section className="grid grid-cols-1 md:grid-cols-2 bg-[#f0efed]">
+        <div className="relative aspect-[4/5] md:aspect-auto md:h-auto overflow-hidden editorial-card">
+          <Image
+            src="/images/odday-hoodie-boy.jpg"
+            alt="Premium Hoodies"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+        <div className="flex items-end px-6 md:px-12 py-12 md:py-16">
+          <ScrollReveal>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[#888] font-medium mb-3">Premium 220 GSM Cotton</p>
+            <h2 className="text-[36px] md:text-[52px] lg:text-[64px] font-bold tracking-[-0.04em] leading-[0.95] text-[#111] mb-6">
+              Warm.<br />Comfortable.
+            </h2>
+            <Link href="/shop?category=hoodies" className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-[#111] border-b border-[#111]/40 pb-1.5 hover:border-[#111] transition-colors">
+              Shop Hoodies
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -83,9 +82,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Block 2: Split — March style two images side by side with text overlays */}
-      <section className="grid grid-cols-1 md:grid-cols-2">
-        <Link href="/shop?category=tshirts" className="relative h-[60vh] md:h-[80vh] overflow-hidden group block editorial-card">
+      {/* Block 2: Split — two portrait images side by side */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-[2px] bg-[#e5e5e5]">
+        <Link href="/shop?category=tshirts" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
           <Image src="/images/odday-plane.jpg" alt="T-Shirts" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
@@ -96,7 +95,7 @@ export default function Home() {
             <span className="text-[11px] tracking-[0.12em] uppercase font-medium border-b border-white/40 pb-1 inline-block">Shop T-Shirts</span>
           </div>
         </Link>
-        <Link href="/shop?category=shorts" className="relative h-[60vh] md:h-[80vh] overflow-hidden group block editorial-card">
+        <Link href="/shop?category=shorts" className="relative aspect-[4/5] overflow-hidden group block editorial-card bg-[#f0efed]">
           <Image src="/images/odday-blue-set.jpg" alt="Co-ords" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute bottom-8 md:bottom-12 left-6 md:left-10 text-white">
