@@ -36,7 +36,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-[100svh] bg-[#fafafa] flex flex-col">
+    <div className="min-h-[100svh] bg-[#111] flex flex-col">
       {/* ===== TOP BAR ===== */}
       <div
         className={`flex items-center justify-between px-6 md:px-10 py-5 transition-all duration-700 ${
@@ -45,18 +45,18 @@ export default function LandingPage() {
         style={{ transitionDelay: "0.1s" }}
       >
         <div className="flex items-center gap-5">
-          <Link href="/home" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#888] hover:text-[#111] transition-colors">
+          <Link href="/home" className="text-[10px] tracking-[0.15em] uppercase font-medium text-white/50 hover:text-white transition-colors">
             Shop
           </Link>
-          <Link href="/about" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#888] hover:text-[#111] transition-colors">
+          <Link href="/about" className="text-[10px] tracking-[0.15em] uppercase font-medium text-white/50 hover:text-white transition-colors">
             About
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <Link href="/contact" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#888] hover:text-[#111] transition-colors">
+          <Link href="/contact" className="text-[10px] tracking-[0.15em] uppercase font-medium text-white/50 hover:text-white transition-colors">
             Contact
           </Link>
-          <Link href="/cart" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#888] hover:text-[#111] transition-colors">
+          <Link href="/cart" className="text-[10px] tracking-[0.15em] uppercase font-medium text-white/50 hover:text-white transition-colors">
             Cart
           </Link>
         </div>
@@ -77,12 +77,12 @@ export default function LandingPage() {
             width={48}
             height={48}
             priority
-            className="mb-4"
+            className="mb-4 brightness-0 invert"
           />
-          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-black tracking-[-0.05em] leading-[0.85] uppercase text-[#111]">
+          <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-black tracking-[-0.05em] leading-[0.85] uppercase text-white">
             ODDAY
           </h1>
-          <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-[#999] font-medium mt-3">
+          <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/40 font-medium mt-3">
             Elevated Kidswear
           </p>
         </div>
@@ -102,12 +102,12 @@ export default function LandingPage() {
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
             >
-              <div className="relative aspect-[3/4] bg-[#eee]">
+              <div className="relative aspect-[5/6] bg-[#f0efed]">
                 <Image
                   src={cat.image}
                   alt={cat.label}
                   fill
-                  className={`object-cover transition-all duration-700 ${
+                  className={`object-contain transition-all duration-700 ${
                     hoveredIdx !== null && hoveredIdx !== i
                       ? "brightness-[0.7] saturate-50"
                       : "brightness-100 saturate-100"
@@ -147,7 +147,7 @@ export default function LandingPage() {
         >
           <Link
             href="/home"
-            className="inline-block text-[11px] tracking-[0.15em] uppercase font-medium text-[#111] border-b border-[#111] pb-1.5 hover:text-[#A52019] hover:border-[#A52019] transition-colors"
+            className="inline-block text-[11px] tracking-[0.15em] uppercase font-medium text-white border-b border-white/60 pb-1.5 hover:text-[#A52019] hover:border-[#A52019] transition-colors"
           >
             Explore All Collections
           </Link>
@@ -161,14 +161,14 @@ export default function LandingPage() {
         }`}
         style={{ transitionDelay: "0.7s" }}
       >
-        <p className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] font-medium">
+        <p className="text-[9px] tracking-[0.1em] uppercase text-white/20 font-medium">
           &copy; 2026 ODDAY
         </p>
         <div className="flex items-center gap-5">
-          <a href="#" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#888] transition-colors font-medium">
+          <a href="#" className="text-[9px] tracking-[0.1em] uppercase text-white/20 hover:text-white/50 transition-colors font-medium">
             Instagram
           </a>
-          <a href="mailto:hello@odday.in" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#888] transition-colors font-medium">
+          <a href="mailto:hello@odday.in" className="text-[9px] tracking-[0.1em] uppercase text-white/20 hover:text-white/50 transition-colors font-medium">
             hello@odday.in
           </a>
         </div>
