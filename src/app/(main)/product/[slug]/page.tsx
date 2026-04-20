@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ScrollReveal";
+import ShopTheLook from "@/components/ShopTheLook";
 
 const sizes = [
   { label: "2-3Y", available: true },
@@ -319,6 +320,9 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+
+      {/* ===== SHOP THE LOOK — Interactive hotspots ===== */}
+      <ShopTheLook />
 
       {/* ===== PREMIUM BASICS — Fabric & Quality ===== */}
       <section className="bg-white">
