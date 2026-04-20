@@ -90,15 +90,15 @@ export default function HeroSlideshow() {
             className="animate-fade-up"
             style={{ animationDuration: "0.7s" }}
           >
-            <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/50 font-medium mb-4">
+            <p className="text-[12px] md:text-[14px] tracking-[0.28em] uppercase text-white/65 font-semibold mb-5">
               {slide.sub}
             </p>
-            <h1 className="text-[42px] md:text-[88px] lg:text-[120px] xl:text-[140px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-8 whitespace-pre-line">
+            <h1 className="text-[48px] md:text-[100px] lg:text-[140px] xl:text-[164px] font-black tracking-[-0.045em] leading-[0.88] text-white mb-10 whitespace-pre-line">
               {slide.headline}
             </h1>
             <Link
               href={slide.href}
-              className="inline-block text-[11px] tracking-[0.12em] uppercase font-medium text-white border-b border-white/40 pb-1.5 hover:border-white transition-colors"
+              className="inline-block text-[13px] md:text-[14px] tracking-[0.16em] uppercase font-bold text-white border-b-2 border-white/60 pb-2 hover:border-white transition-colors"
             >
               {slide.cta}
             </Link>

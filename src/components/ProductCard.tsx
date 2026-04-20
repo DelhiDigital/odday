@@ -46,7 +46,7 @@ export default function ProductCard({ id, name, price, originalPrice, image, hov
 
         {/* Tag */}
         {tag && (
-          <span className="absolute top-3 left-3 text-[9px] tracking-[0.12em] uppercase font-semibold bg-white px-3 py-1.5 z-10">
+          <span className="absolute top-4 left-4 text-[10px] tracking-[0.14em] uppercase font-bold bg-white px-3.5 py-2 z-10">
             {tag}
           </span>
         )}
@@ -54,7 +54,7 @@ export default function ProductCard({ id, name, price, originalPrice, image, hov
         {/* Quick Add */}
         <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
           <button
-            className="w-full bg-[#111] text-white text-[10px] tracking-[0.12em] uppercase py-3.5 font-medium hover:bg-[#333] transition-colors"
+            className="w-full bg-[#111] text-white text-[12px] tracking-[0.14em] uppercase py-4 font-bold hover:bg-[#333] transition-colors"
             onClick={(e) => e.preventDefault()}
           >
             Quick Add +
@@ -63,14 +63,14 @@ export default function ProductCard({ id, name, price, originalPrice, image, hov
       </div>
 
       {/* Info */}
-      <div className="space-y-1">
-        <h3 className="text-[12px] tracking-[0.02em] font-medium group-hover:opacity-60 transition-opacity">
+      <div className="space-y-1.5">
+        <h3 className="text-[15px] tracking-[-0.01em] font-bold group-hover:opacity-60 transition-opacity leading-[1.3]">
           {name}
         </h3>
         <div className="flex items-center gap-2">
-          <span className="text-[12px] font-medium">₹{price.toLocaleString()}</span>
+          <span className="text-[14px] font-bold text-[#111]">₹{price.toLocaleString()}</span>
           {originalPrice && (
-            <span className="text-[11px] text-[#bbb] line-through">₹{originalPrice.toLocaleString()}</span>
+            <span className="text-[13px] text-[#aaa] line-through font-medium">₹{originalPrice.toLocaleString()}</span>
           )}
         </div>
       </div>

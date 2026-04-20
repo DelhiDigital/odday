@@ -3,11 +3,6 @@
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-
-// Routes that have a dark hero at top — header should start transparent with white text.
-// On all other routes, header starts in "scrolled" (white bg + dark text) state.
-const OVERLAY_ROUTES = ["/", "/home2", "/about"];
 
 const navLinks = [
   { label: "Shop", href: "/shop" },
@@ -26,11 +21,6 @@ const mobileCategories = [
 ];
 
 export default function Header() {
-  const pathname = usePathname();
-  const isOverlayRoute = OVERLAY_ROUTES.some(
-    (p) => pathname === p || pathname.startsWith(p + "/")
-  );
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [featuredOpen, setFeaturedOpen] = useState(false);
@@ -46,8 +36,9 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen, featuredOpen]);
 
-  // Transparent state only applies on overlay routes before scroll.
-  const isTransparent = isOverlayRoute && !scrolled;
+  // When the header is transparent (top of page), text is always white.
+  // On scroll, the header gets a white bg and text switches to dark.
+  const isTransparent = !scrolled;
   const textColor = isTransparent ? "text-white" : "text-[#111]";
   const iconInvert = isTransparent ? "brightness-0 invert" : "";
   const borderColor = isTransparent ? "border-white/60" : "border-[#111]";
@@ -75,7 +66,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[12px] tracking-[0.12em] uppercase font-medium hover:opacity-60 transition-opacity ${textColor}`}
+                className={`text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity ${textColor}`}
               >
                 {item.label}
               </Link>
@@ -114,7 +105,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[12px] tracking-[0.12em] uppercase font-medium hover:opacity-60 transition-opacity ${textColor}`}
+                className={`text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity ${textColor}`}
               >
                 {item.label}
               </Link>
