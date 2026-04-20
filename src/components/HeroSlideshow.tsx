@@ -84,28 +84,31 @@ export default function HeroSlideshow() {
 
       {/* Content */}
       <div className="absolute inset-0 flex items-end z-10">
-        <div className="w-full px-6 md:px-10 lg:px-14 pb-16 md:pb-20">
+        <div className="w-full px-5 sm:px-6 md:px-10 lg:px-14 pb-14 sm:pb-16 md:pb-20">
           <div
             key={current}
             className="animate-fade-up"
             style={{ animationDuration: "0.7s" }}
           >
-            <p className="text-[12px] md:text-[14px] tracking-[0.28em] uppercase text-white/65 font-semibold mb-5">
+            <p className="text-[10px] sm:text-[12px] md:text-[14px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-white/65 font-semibold mb-3 sm:mb-5">
               {slide.sub}
             </p>
-            <h1 className="text-[48px] md:text-[100px] lg:text-[140px] xl:text-[164px] font-black tracking-[-0.045em] leading-[0.88] text-white mb-10 whitespace-pre-line">
+            <h1
+              className="font-black tracking-[-0.04em] md:tracking-[-0.045em] leading-[0.9] md:leading-[0.88] text-white mb-6 sm:mb-8 md:mb-10 whitespace-pre-line"
+              style={{ fontSize: "clamp(2.25rem, 9vw, 9.5rem)" }}
+            >
               {slide.headline}
             </h1>
             <Link
               href={slide.href}
-              className="inline-block text-[13px] md:text-[14px] tracking-[0.16em] uppercase font-bold text-white border-b-2 border-white/60 pb-2 hover:border-white transition-colors"
+              className="inline-block text-[11px] sm:text-[13px] md:text-[14px] tracking-[0.14em] sm:tracking-[0.16em] uppercase font-bold text-white border-b-2 border-white/60 pb-1.5 sm:pb-2 hover:border-white transition-colors"
             >
               {slide.cta}
             </Link>
           </div>
 
           {/* Slide navigation */}
-          <div className="flex items-center gap-6 mt-10">
+          <div className="flex items-center gap-4 sm:gap-6 mt-7 sm:mt-10">
             <div className="flex gap-2">
               {slides.map((_, i) => (
                 <button

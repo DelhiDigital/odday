@@ -133,7 +133,7 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity focus:outline-none ${textColor}`}
+                    className={`relative text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity focus:outline-none`}
                   >
                     {item.label}
                     {item.hasMega && (
@@ -184,7 +184,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity focus:outline-none ${textColor}`}
+                className={`text-[13px] tracking-[0.14em] uppercase font-bold hover:opacity-60 transition-opacity focus:outline-none`}
               >
                 {item.label}
               </Link>
