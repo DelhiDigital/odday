@@ -79,10 +79,16 @@ img { display: block; max-width: 100%; }
   to { transform: scaleX(1); }
 }
 
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
 .animate-fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-slide-down { animation: slideDown 0.4s ease forwards; }
 .animate-scale-in { animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-slide-in-right { animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 /* ===== BUTTONS ===== */
 .btn-primary {
