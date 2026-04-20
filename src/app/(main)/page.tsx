@@ -14,13 +14,6 @@ const newDropProducts = [
   { id: "layer-crew-teal", name: "ODDAY Classic Cap", price: 799, image: "/images/product-4.jpg", tag: "New" },
 ];
 
-const bestSellers = [
-  { id: "confidence-hoodie", name: "Confidence Hoodie", price: 2199, originalPrice: 2599, image: "/images/product-5.jpg", hoverImage: "/images/product-5-hover.jpg", tag: "Best Seller" },
-  { id: "play-shorts-olive", name: "Play Skater Jeans", price: 1499, image: "/images/product-6.jpg", hoverImage: "/images/product-6-hover.jpg" },
-  { id: "character-tee-sand", name: "Character Long Tee", price: 1299, image: "/images/product-7.jpg", hoverImage: "/images/product-7-hover.jpg" },
-  { id: "effort-joggers-gray", name: "Effort Sweatshirt", price: 1599, originalPrice: 1899, image: "/images/product-8.jpg", hoverImage: "/images/product-8-hover.jpg" },
-];
-
 export default function Home() {
   return (
     <>
@@ -53,9 +46,9 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* ===== NEW ARRIVALS — Clean 4-column grid ===== */}
+      {/* ===== NEW ARRIVALS — End-to-end grid ===== */}
       <section className="bg-white">
-        <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1500px] mx-auto">
+        <div className="px-6 md:px-10 lg:px-14 py-14 md:py-20">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-10 md:mb-14">
               <div>
@@ -78,35 +71,6 @@ export default function Home() {
 
           <ScrollReveal className="text-center mt-10 md:hidden">
             <Link href="/shop?collection=new" className="btn-outline text-[10px] px-10">View All</Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ===== BESTSELLERS ===== */}
-      <section className="bg-[#f5f5f3]">
-        <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1500px] mx-auto">
-          <ScrollReveal>
-            <div className="flex items-end justify-between mb-10 md:mb-14">
-              <div>
-                <span className="section-label">Most Loved</span>
-                <h2 className="text-[28px] md:text-[40px] font-bold tracking-[-0.03em] leading-[1.05]">Bestsellers</h2>
-              </div>
-              <Link href="/shop?sort=best-sellers" className="text-[11px] tracking-[0.1em] uppercase font-medium link-underline pb-0.5 hidden md:inline-block">
-                View All
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {bestSellers.map((p, i) => (
-              <ScrollReveal key={p.id} delay={i * 0.06}>
-                <ProductCard {...p} />
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal className="text-center mt-10 md:hidden">
-            <Link href="/shop?sort=best-sellers" className="btn-outline text-[10px] px-10">View All</Link>
           </ScrollReveal>
         </div>
       </section>
