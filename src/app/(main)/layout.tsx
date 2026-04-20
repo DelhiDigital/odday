@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MainWrapper from "@/components/MainWrapper";
 
 export default function MainLayout({
   children,
@@ -9,7 +10,7 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <MainWrapper>{children}</MainWrapper>
       <Footer />
     </>
   );

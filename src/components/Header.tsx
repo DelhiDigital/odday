@@ -8,7 +8,6 @@ const navLinks = [
   { label: "Shop", href: "/shop" },
   { label: "New Drop", href: "/shop?collection=new" },
   { label: "T-Shirts", href: "/shop?category=tshirts" },
-  { label: "Shorts", href: "/shop?category=shorts" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -24,6 +23,7 @@ const mobileCategories = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [featuredOpen, setFeaturedOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -32,9 +32,16 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen || featuredOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+  }, [menuOpen, featuredOpen]);
+
+  // White when transparent (top); dark when scrolled (white bg)
+  const textColor = scrolled ? "text-[#111]" : "text-white";
+  const iconInvert = scrolled ? "" : "brightness-0 invert";
+  const borderColor = scrolled ? "border-[#111]" : "border-white/60";
+  const borderColorSoft = scrolled ? "border-[#e5e5e5]" : "border-white/30";
+  const badgeColor = scrolled ? "bg-[#111] text-white" : "bg-white text-[#111]";
 
   return (
     <>
@@ -43,102 +50,133 @@ export default function Header() {
         Free Shipping on Orders Above ₹1499
       </div>
 
-      {/* ===== HEADER ===== */}
+      {/* ===== HEADER — End-to-end, larger, transparent → white ===== */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white"
+        className={`fixed top-[37px] left-0 right-0 z-40 transition-all duration-300 ${
+          scrolled ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.04)]" : "bg-transparent"
         }`}
       >
-        {/* Desktop */}
-        <div className="hidden md:grid grid-cols-3 items-center h-[60px] px-8 lg:px-12 max-w-[1600px] mx-auto">
+        {/* Desktop — full width (no max-w) */}
+        <div className="hidden md:grid grid-cols-3 items-center h-[80px] px-10 lg:px-14">
           {/* Left — Nav */}
-          <nav className="flex items-center gap-7">
+          <nav className="flex items-center gap-8">
             {navLinks.slice(0, 3).map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[11px] tracking-[0.1em] uppercase font-medium hover:opacity-50 transition-opacity"
+                className={`text-[12px] tracking-[0.12em] uppercase font-medium hover:opacity-60 transition-opacity ${textColor}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Center — Logo */}
-          <Link href="/" className="flex items-center justify-center gap-2.5">
-            <NextImage src="/logos/ODDAY Logomark.png" alt="ODDAY" width={30} height={30} priority />
-            <NextImage src="/logos/ODDAY Wordmark.png" alt="ODDAY" width={90} height={22} priority />
+          {/* Center — Wordmark only */}
+          <Link href="/" className="flex items-center justify-center">
+            <NextImage
+              src="/logos/ODDAY Wordmark.png"
+              alt="ODDAY"
+              width={130}
+              height={32}
+              priority
+              className={iconInvert}
+            />
           </Link>
 
-          {/* Right — Nav + Icons */}
+          {/* Right — Logomark icon + Nav + Icons */}
           <div className="flex items-center justify-end gap-7">
+            <button
+              onClick={() => setFeaturedOpen(true)}
+              aria-label="Featured product"
+              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:scale-105 ${borderColor}`}
+            >
+              <NextImage
+                src="/logos/ODDAY Logomark.png"
+                alt="ODDAY"
+                width={20}
+                height={20}
+                className={iconInvert}
+              />
+            </button>
+
             {navLinks.slice(3).map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[11px] tracking-[0.1em] uppercase font-medium hover:opacity-50 transition-opacity"
+                className={`text-[12px] tracking-[0.12em] uppercase font-medium hover:opacity-60 transition-opacity ${textColor}`}
               >
                 {item.label}
               </Link>
             ))}
 
-            <div className="flex items-center gap-5 ml-4 pl-4 border-l border-[#e5e5e5]">
-              <button aria-label="Search" className="hover:opacity-50 transition-opacity">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <div className={`flex items-center gap-5 ml-4 pl-4 border-l ${borderColorSoft}`}>
+              <button aria-label="Search" className={`hover:opacity-60 transition-opacity ${textColor}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.35-4.35" />
                 </svg>
               </button>
-              <Link href="#" aria-label="Account" className="hover:opacity-50 transition-opacity">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <Link href="#" aria-label="Account" className={`hover:opacity-60 transition-opacity ${textColor}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="12" cy="8" r="4" /><path d="M5 20c0-4 3.5-6 7-6s7 2 7 6" />
                 </svg>
               </Link>
-              <Link href="/cart" aria-label="Cart" className="relative hover:opacity-50 transition-opacity">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <Link href="/cart" aria-label="Cart" className={`relative hover:opacity-60 transition-opacity ${textColor}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M4 7h16l-1.5 10H5.5L4 7z" /><path d="M9 7V5a3 3 0 016 0v2" />
                 </svg>
-                <span className="absolute -top-1.5 -right-2 bg-[#111] text-white text-[7px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-semibold">2</span>
+                <span className={`absolute -top-1.5 -right-2 text-[8px] w-[15px] h-[15px] rounded-full flex items-center justify-center font-semibold ${badgeColor}`}>2</span>
               </Link>
             </div>
           </div>
         </div>
 
         {/* Mobile Header */}
-        <div className="md:hidden flex items-center justify-between h-[52px] px-4">
-          <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <div className="md:hidden flex items-center justify-between h-[64px] px-5">
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" className={textColor}>
             {menuOpen ? (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5"><path d="M3 7h18M3 12h18M3 17h18" /></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 7h18M3 12h18M3 17h18" /></svg>
             )}
           </button>
 
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5">
-            <NextImage src="/logos/ODDAY Logomark.png" alt="ODDAY" width={24} height={24} priority />
-            <NextImage src="/logos/ODDAY Wordmark.png" alt="ODDAY" width={70} height={18} priority />
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+            <NextImage
+              src="/logos/ODDAY Wordmark.png"
+              alt="ODDAY"
+              width={96}
+              height={24}
+              priority
+              className={iconInvert}
+            />
           </Link>
 
           <div className="flex items-center gap-4">
-            <button aria-label="Search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5">
-                <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.35-4.35" />
-              </svg>
+            <button
+              onClick={() => setFeaturedOpen(true)}
+              aria-label="Featured"
+              className={`w-9 h-9 rounded-full border flex items-center justify-center ${borderColor}`}
+            >
+              <NextImage
+                src="/logos/ODDAY Logomark.png"
+                alt="ODDAY"
+                width={16}
+                height={16}
+                className={iconInvert}
+              />
             </button>
-            <Link href="/cart" className="relative" aria-label="Cart">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5">
+            <Link href="/cart" className={`relative ${textColor}`} aria-label="Cart">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M4 7h16l-1.5 10H5.5L4 7z" /><path d="M9 7V5a3 3 0 016 0v2" />
               </svg>
-              <span className="absolute -top-1 -right-1.5 bg-[#111] text-white text-[7px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-semibold">2</span>
+              <span className={`absolute -top-1 -right-1.5 text-[7px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-semibold ${badgeColor}`}>2</span>
             </Link>
           </div>
         </div>
 
-        <div className="h-[0.5px] bg-[#e5e5e5]" />
-
-        {/* ===== MOBILE MENU — Full-screen editorial ===== */}
+        {/* ===== MOBILE MENU ===== */}
         {menuOpen && (
-          <div className="md:hidden fixed inset-0 top-[calc(52px+37px+0.5px)] bg-white z-50 overflow-auto">
-            {/* Categories with images */}
+          <div className="md:hidden fixed inset-0 top-[calc(64px+37px)] bg-white z-50 overflow-auto">
             <div className="px-5 py-6">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#888] mb-5 font-medium">Shop</p>
               {mobileCategories.map((cat, i) => (
@@ -160,7 +198,6 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Links */}
             <div className="px-5 py-6 border-t border-[#f0f0f0]">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#888] mb-4 font-medium">More</p>
               {[
@@ -181,7 +218,6 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Bottom */}
             <div className="px-5 py-6 border-t border-[#f0f0f0]">
               <Link href="#" className="flex items-center gap-3 text-[12px] text-[#888] mb-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="12" cy="8" r="4" /><path d="M5 20c0-4 3.5-6 7-6s7 2 7 6" /></svg>
@@ -195,6 +231,54 @@ export default function Header() {
           </div>
         )}
       </header>
+
+      {/* ===== FEATURED PRODUCT MODAL ===== */}
+      {featuredOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-5 md:p-10 bg-black/60 backdrop-blur-sm animate-fade-in"
+          onClick={() => setFeaturedOpen(false)}
+        >
+          <div
+            className="relative bg-white w-full max-w-[560px] max-h-[90vh] overflow-auto animate-fade-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setFeaturedOpen(false)}
+              className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center hover:opacity-60 transition-opacity z-10"
+              aria-label="Close"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+
+            <p className="px-8 pt-8 text-[12px] font-bold tracking-[0.06em] uppercase">New Drop</p>
+
+            <div className="relative aspect-[3/4] mx-8 my-6 bg-[#f5f5f3]">
+              <NextImage
+                src="/images/product-1.jpg"
+                alt="Mindset Oversized Tee"
+                fill
+                className="object-cover"
+                sizes="560px"
+              />
+            </div>
+
+            <div className="px-8 pb-8 text-center">
+              <h3 className="text-[24px] md:text-[28px] font-bold tracking-[-0.03em] mb-5">
+                Mindset is Bigger than Medals.
+              </h3>
+              <Link
+                href="/shop?collection=new"
+                onClick={() => setFeaturedOpen(false)}
+                className="inline-block bg-[#111] text-white text-[11px] tracking-[0.12em] uppercase font-medium px-10 py-3.5 hover:bg-[#9E1528] transition-colors"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
