@@ -25,15 +25,15 @@ export default function Preloader() {
         <Image
           src="/logos/ODDAY Logomark.png"
           alt="ODDAY"
-          width={52}
-          height={52}
+          width={96}
+          height={96}
           priority
         />
         <Image
           src="/logos/ODDAY Wordmark.png"
           alt="ODDAY"
-          width={110}
-          height={28}
+          width={200}
+          height={50}
           priority
         />
       </div>
@@ -44,7 +44,7 @@ export default function Preloader() {
           50% { opacity: 0.25; }
         }
         .preloader-blink {
-          animation: blink 1.1s ease-in-out infinite;
+          animation: blink 0.7s ease-in-out infinite;
           will-change: opacity;
         }
       `}</style>
