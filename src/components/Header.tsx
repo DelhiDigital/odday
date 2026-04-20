@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-[#A52019] text-white text-center py-2.5 text-[10px] tracking-[0.18em] uppercase font-medium">
+      <div className="bg-[#9E1528] text-white text-center py-2.5 text-[10px] tracking-[0.18em] uppercase font-medium">
         Free Shipping on Orders Above ₹1499
       </div>
 

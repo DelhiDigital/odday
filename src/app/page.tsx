@@ -44,18 +44,18 @@ export default function LandingPage() {
         style={{ transitionDelay: "0.1s" }}
       >
         <div className="flex items-center gap-5">
-          <Link href="/home" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#A52019] transition-colors">
+          <Link href="/home" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#9E1528] transition-colors">
             Shop
           </Link>
-          <Link href="/about" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#A52019] transition-colors">
+          <Link href="/about" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#9E1528] transition-colors">
             About
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <Link href="/contact" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#A52019] transition-colors">
+          <Link href="/contact" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#9E1528] transition-colors">
             Contact
           </Link>
-          <Link href="/cart" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#A52019] transition-colors">
+          <Link href="/cart" className="text-[10px] tracking-[0.15em] uppercase font-medium text-[#999] hover:text-[#9E1528] transition-colors">
             Cart
           </Link>
         </div>
@@ -81,7 +81,7 @@ export default function LandingPage() {
           <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-black tracking-[-0.05em] leading-[0.85] uppercase text-[#111]">
             ODDAY
           </h1>
-          <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-[#A52019] font-semibold mt-3">
+          <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-[#9E1528] font-semibold mt-3">
             Elevated Kidswear
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function LandingPage() {
         >
           <Link
             href="/home"
-            className="inline-block text-[11px] tracking-[0.15em] uppercase font-semibold text-[#A52019] border-b border-[#A52019]/50 pb-1.5 hover:border-[#A52019] transition-colors"
+            className="inline-block text-[11px] tracking-[0.15em] uppercase font-semibold text-[#9E1528] border-b border-[#9E1528]/50 pb-1.5 hover:border-[#9E1528] transition-colors"
           >
             Explore All Collections
           </Link>
@@ -164,10 +164,10 @@ export default function LandingPage() {
           &copy; 2026 ODDAY
         </p>
         <div className="flex items-center gap-5">
-          <a href="#" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#A52019] transition-colors font-medium">
+          <a href="#" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#9E1528] transition-colors font-medium">
             Instagram
           </a>
-          <a href="mailto:hello@odday.in" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#A52019] transition-colors font-medium">
+          <a href="mailto:hello@odday.in" className="text-[9px] tracking-[0.1em] uppercase text-[#ccc] hover:text-[#9E1528] transition-colors font-medium">
             hello@odday.in
           </a>
         </div>

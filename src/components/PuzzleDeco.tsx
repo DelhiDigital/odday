@@ -8,7 +8,7 @@ interface PuzzleDecoProps {
   opacity?: number;
 }
 
-export default function PuzzleDeco({ color = "#A52019", size = 40, className = "", rotate = 0, opacity = 0.08 }: PuzzleDecoProps) {
+export default function PuzzleDeco({ color = "#9E1528", size = 40, className = "", rotate = 0, opacity = 0.08 }: PuzzleDecoProps) {
   return (
     <svg
       width={size}

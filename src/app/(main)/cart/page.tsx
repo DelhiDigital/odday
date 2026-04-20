@@ -59,10 +59,10 @@ export default function CartPage() {
       {/* Free Shipping Progress */}
       {freeShippingRemaining > 0 && (
         <div className="mb-8 p-4 bg-[#fdf8f5] border border-[#f0e0d0] rounded-sm">
-          <p className="text-[11px] text-[#A52019] mb-2">Add ₹{freeShippingRemaining.toLocaleString()} more for free shipping</p>
+          <p className="text-[11px] text-[#9E1528] mb-2">Add ₹{freeShippingRemaining.toLocaleString()} more for free shipping</p>
           <div className="w-full h-1 bg-[#e5e5e5] rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#A52019] rounded-full transition-all duration-700"
+              className="h-full bg-[#9E1528] rounded-full transition-all duration-700"
               style={{ width: `${Math.min(100, (subtotal / 1499) * 100)}%` }}
             />
           </div>
@@ -89,10 +89,10 @@ export default function CartPage() {
                 <div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <Link href={`/product/${item.id}`} className="text-[12px] hover:text-[#A52019] transition-colors">{item.name}</Link>
+                      <Link href={`/product/${item.id}`} className="text-[12px] hover:text-[#9E1528] transition-colors">{item.name}</Link>
                       <p className="text-[11px] text-[#999] mt-0.5">{item.variant}</p>
                     </div>
-                    <button onClick={() => removeItem(item.id)} className="text-[#bbb] hover:text-[#A52019] transition-colors p-1">
+                    <button onClick={() => removeItem(item.id)} className="text-[#bbb] hover:text-[#9E1528] transition-colors p-1">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M18 6L6 18M6 6l12 12" /></svg>
                     </button>
                   </div>

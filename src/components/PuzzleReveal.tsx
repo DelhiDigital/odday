@@ -47,15 +47,15 @@ export default function PuzzleReveal() {
       <div className="bg-gradient-to-br from-[#fdf2f0] to-[#f5f4f0] rounded-xl p-6 md:p-12 text-center relative overflow-hidden">
         {/* Background puzzle pieces */}
         <svg className="absolute top-4 left-4 opacity-[0.04]" width="80" height="80" viewBox="0 0 50 50">
-          <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#A52019" />
+          <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#9E1528" />
         </svg>
         <svg className="absolute bottom-4 right-4 opacity-[0.04] rotate-180" width="60" height="60" viewBox="0 0 50 50">
-          <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#A52019" />
+          <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#9E1528" />
         </svg>
 
         {!complete ? (
           <>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#A52019] font-semibold mb-2">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#9E1528] font-semibold mb-2">
               Tap to Reveal
             </p>
             <h3 className="text-[20px] md:text-[26px] font-bold mb-2">Solve the Puzzle</h3>
@@ -71,8 +71,8 @@ export default function PuzzleReveal() {
                     onClick={() => handlePieceClick(piece.id)}
                     className={`w-[72px] h-[72px] md:w-[90px] md:h-[90px] rounded-md transition-all duration-500 relative overflow-hidden ${
                       isRevealed
-                        ? "bg-[#A52019] scale-95"
-                        : "bg-white border-2 border-[#e5e5e5] hover:border-[#A52019] hover:scale-105 cursor-pointer"
+                        ? "bg-[#9E1528] scale-95"
+                        : "bg-white border-2 border-[#e5e5e5] hover:border-[#9E1528] hover:scale-105 cursor-pointer"
                     }`}
                     style={{
                       transitionDelay: isVisible ? `${piece.id * 0.05}s` : "0s",
@@ -85,7 +85,7 @@ export default function PuzzleReveal() {
                       </span>
                     ) : (
                       <svg width="24" height="24" viewBox="0 0 50 50" className="mx-auto opacity-20">
-                        <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#A52019" />
+                        <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#9E1528" />
                       </svg>
                     )}
                   </button>
@@ -99,19 +99,19 @@ export default function PuzzleReveal() {
           <div className="animate-scale-in">
             <div className="text-[32px] mb-3">
               <svg className="mx-auto" width="48" height="48" viewBox="0 0 50 50">
-                <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#A52019" />
+                <path d="M10 0h30c0 5.5-4.5 10-10 10 5.5 0 10 4.5 10 10v20c-5.5 0-10-4.5-10-10 0 5.5-4.5 10-10 10H10c0-5.5 4.5-10 10-10C14.5 30 10 25.5 10 20V0z" fill="#9E1528" />
               </svg>
             </div>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#A52019] font-semibold mb-2">Puzzle Complete!</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#9E1528] font-semibold mb-2">Puzzle Complete!</p>
             <h3 className="text-[22px] md:text-[28px] font-bold mb-2">You Unlocked 10% Off</h3>
             <p className="text-[12px] text-[#999] mb-6">Use this code on your first order</p>
 
             {/* Discount Code */}
-            <div className="inline-flex items-center gap-3 bg-white border-2 border-dashed border-[#A52019] rounded-lg px-6 py-4 mb-4">
-              <span className="text-[18px] md:text-[22px] font-bold tracking-[0.15em] text-[#A52019]">ODDAYFIRST</span>
+            <div className="inline-flex items-center gap-3 bg-white border-2 border-dashed border-[#9E1528] rounded-lg px-6 py-4 mb-4">
+              <span className="text-[18px] md:text-[22px] font-bold tracking-[0.15em] text-[#9E1528]">ODDAYFIRST</span>
               <button
                 onClick={handleCopy}
-                className="text-[10px] tracking-[0.1em] uppercase bg-[#A52019] text-white px-4 py-2 rounded font-semibold hover:bg-[#8a1a14] transition-colors"
+                className="text-[10px] tracking-[0.1em] uppercase bg-[#9E1528] text-white px-4 py-2 rounded font-semibold hover:bg-[#8a1a14] transition-colors"
               >
                 {copied ? "Copied!" : "Copy"}
               </button>

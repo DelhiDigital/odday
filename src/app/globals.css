@@ -3,7 +3,7 @@
 @theme inline {
   --color-brand-darkest: #0a0a0a;
   --color-brand-dark: #1a1a1a;
-  --color-brand-accent: #A52019;
+  --color-brand-accent: #9E1528;
   --color-foreground: #111111;
   --color-background: #FAFAFA;
   --color-muted: #888888;
@@ -148,7 +148,7 @@ img { display: block; max-width: 100%; }
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #A52019;
+  color: #9E1528;
   font-weight: 600;
   margin-bottom: 8px;
   display: block;
@@ -253,14 +253,14 @@ img { display: block; max-width: 100%; }
 .red-line {
   width: 40px;
   height: 2px;
-  background: #A52019;
+  background: #9E1528;
 }
 .accent-dot::before {
   content: '';
   display: inline-block;
   width: 5px;
   height: 5px;
-  background: #A52019;
+  background: #9E1528;
   border-radius: 50%;
   margin-right: 8px;
   vertical-align: middle;

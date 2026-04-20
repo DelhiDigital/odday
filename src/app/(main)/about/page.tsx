@@ -98,7 +98,7 @@ export default function AboutPage() {
             ].map((v, i) => (
               <ScrollReveal key={v.title} delay={i * 0.12} className="text-center">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-[#e5e5e5] flex items-center justify-center">
-                  <span className="text-[#A52019] text-[16px] font-light">0{i + 1}</span>
+                  <span className="text-[#9E1528] text-[16px] font-light">0{i + 1}</span>
                 </div>
                 <h3 className="text-[14px] tracking-[0.06em] mb-3">{v.title}</h3>
                 <p className="text-[12px] text-[#999] leading-[1.8]">{v.desc}</p>

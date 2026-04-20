@@ -189,7 +189,7 @@ export default function Home2() {
               placeholder="Email address"
               className="flex-1 bg-transparent py-3 text-[13px] tracking-[0.02em] focus:outline-none placeholder:text-[#bbb]"
             />
-            <button className="text-[11px] tracking-[0.12em] uppercase font-medium text-[#111] py-3 pl-4 hover:text-[#A52019] transition-colors">
+            <button className="text-[11px] tracking-[0.12em] uppercase font-medium text-[#111] py-3 pl-4 hover:text-[#9E1528] transition-colors">
               Subscribe
             </button>
           </div>

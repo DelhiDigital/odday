@@ -20,7 +20,7 @@ export default function ContactPage() {
             { label: "Hours", value: "Mon–Sat, 10–6 IST" },
           ].map((item, i) => (
             <div key={item.label} className={`py-6 ${i < 2 ? "border-r border-[#e5e5e5]" : ""}`}>
-              <p className="text-[9px] tracking-[0.2em] uppercase text-[#A52019] mb-2 font-medium">{item.label}</p>
+              <p className="text-[9px] tracking-[0.2em] uppercase text-[#9E1528] mb-2 font-medium">{item.label}</p>
               <p className="text-[11px]">{item.value}</p>
             </div>
           ))}

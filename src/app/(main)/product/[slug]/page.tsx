@@ -147,7 +147,7 @@ export default function ProductPage() {
               <div className="flex items-baseline gap-2.5 mb-1">
                 <span className="text-[15px] font-semibold">₹1,299</span>
                 <span className="text-[13px] text-[#999] line-through">₹1,599</span>
-                <span className="text-[11px] text-[#A52019] font-medium">-19%</span>
+                <span className="text-[11px] text-[#9E1528] font-medium">-19%</span>
               </div>
               <p className="text-[11px] text-[#999] mb-5">MRP incl. of all taxes</p>
 
@@ -180,7 +180,7 @@ export default function ProductPage() {
                     <span className="text-[#999]">Size:</span>
                     {selectedSize && <span className="font-medium ml-1">{selectedSize}</span>}
                   </p>
-                  <button className="text-[11px] text-[#1a1a1a] underline underline-offset-2 hover:text-[#A52019]">
+                  <button className="text-[11px] text-[#1a1a1a] underline underline-offset-2 hover:text-[#9E1528]">
                     Size guide
                   </button>
                 </div>
@@ -208,7 +208,7 @@ export default function ProductPage() {
                   ))}
                 </div>
                 {sizeError && (
-                  <p className="text-[11px] text-[#A52019] mt-2 animate-fade-in">Please select a size</p>
+                  <p className="text-[11px] text-[#9E1528] mt-2 animate-fade-in">Please select a size</p>
                 )}
               </div>
 
@@ -260,7 +260,7 @@ export default function ProductPage() {
                   <div key={item.key} className="border-b border-[#eee]">
                     <button onClick={() => toggleAccordion(item.key)} className="w-full flex items-center gap-3 py-4 text-[13px] group">
                       <span className="text-[#999]">{item.icon}</span>
-                      <span className="flex-1 text-left group-hover:text-[#A52019] transition-colors">{item.label}</span>
+                      <span className="flex-1 text-left group-hover:text-[#9E1528] transition-colors">{item.label}</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.5"
                         className={`transition-transform duration-300 ${openAccordion === item.key ? "rotate-180" : ""}`}>
                         <path d="M6 9l6 6 6-6"/>
@@ -306,7 +306,7 @@ export default function ProductPage() {
                   <div className="pb-5 text-[12px] text-[#666] leading-[1.8] animate-fade-in">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-full bg-[#eee] rounded-full h-2 overflow-hidden">
-                        <div className="bg-[#A52019] h-full rounded-full" style={{ width: "100%" }} />
+                        <div className="bg-[#9E1528] h-full rounded-full" style={{ width: "100%" }} />
                       </div>
                       <span className="shrink-0 text-[11px]">Cotton 100%</span>
                     </div>

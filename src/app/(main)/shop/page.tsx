@@ -16,7 +16,7 @@ const allProducts = [
   { id: "effort-joggers-gray", name: "Effort Joggers", price: 1599, originalPrice: 1899, image: "/images/product-8.jpg", category: "joggers", colors: ["#999", "#1a1a1a"] },
   { id: "build-tee-black", name: "Build Tee", price: 1299, image: "/images/product-1.jpg", category: "tshirts", colors: ["#1a1a1a", "#fff"] },
   { id: "own-it-shorts-navy", name: "Own It Shorts", price: 1099, image: "/images/product-2.jpg", category: "shorts", colors: ["#2a3a5c", "#1a1a1a"] },
-  { id: "mindset-crew-red", name: "Mindset Crew", price: 1799, originalPrice: 2099, image: "/images/product-3.jpg", tag: "New", category: "tshirts", colors: ["#A52019", "#1a1a1a"] },
+  { id: "mindset-crew-red", name: "Mindset Crew", price: 1799, originalPrice: 2099, image: "/images/product-3.jpg", tag: "New", category: "tshirts", colors: ["#9E1528", "#1a1a1a"] },
   { id: "everyday-joggers-black", name: "Everyday Joggers", price: 1599, image: "/images/product-4.jpg", category: "joggers", colors: ["#1a1a1a", "#999"] },
 ];
 
