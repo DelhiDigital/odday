@@ -3,6 +3,11 @@
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+
+// Routes that have a dark hero at top — header should start transparent with white text.
+// On all other routes, header starts in "scrolled" (white bg + dark text) state.
+const OVERLAY_ROUTES = ["/", "/home2", "/about"];
 
 const navLinks = [
   { label: "Shop", href: "/shop" },
@@ -21,6 +26,11 @@ const mobileCategories = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const isOverlayRoute = OVERLAY_ROUTES.some(
+    (p) => pathname === p || pathname.startsWith(p + "/")
+  );
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [featuredOpen, setFeaturedOpen] = useState(false);
@@ -36,12 +46,13 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen, featuredOpen]);
 
-  // White when transparent (top); dark when scrolled (white bg)
-  const textColor = scrolled ? "text-[#111]" : "text-white";
-  const iconInvert = scrolled ? "" : "brightness-0 invert";
-  const borderColor = scrolled ? "border-[#111]" : "border-white/60";
-  const borderColorSoft = scrolled ? "border-[#e5e5e5]" : "border-white/30";
-  const badgeColor = scrolled ? "bg-[#111] text-white" : "bg-white text-[#111]";
+  // Transparent state only applies on overlay routes before scroll.
+  const isTransparent = isOverlayRoute && !scrolled;
+  const textColor = isTransparent ? "text-white" : "text-[#111]";
+  const iconInvert = isTransparent ? "brightness-0 invert" : "";
+  const borderColor = isTransparent ? "border-white/60" : "border-[#111]";
+  const borderColorSoft = isTransparent ? "border-white/30" : "border-[#e5e5e5]";
+  const badgeColor = isTransparent ? "bg-white text-[#111]" : "bg-[#111] text-white";
 
   return (
     <>
@@ -53,7 +64,7 @@ export default function Header() {
       {/* ===== HEADER — End-to-end, larger, transparent → white ===== */}
       <header
         className={`fixed top-[37px] left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.04)]" : "bg-transparent"
+          isTransparent ? "bg-transparent" : "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.04)]"
         }`}
       >
         {/* Desktop — full width (no max-w) */}

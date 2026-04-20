@@ -84,7 +84,7 @@ export default function HeroSlideshow() {
 
       {/* Content */}
       <div className="absolute inset-0 flex items-end z-10">
-        <div className="w-full px-6 md:px-12 pb-16 md:pb-20 max-w-[1500px] mx-auto">
+        <div className="w-full px-6 md:px-10 lg:px-14 pb-16 md:pb-20">
           <div
             key={current}
             className="animate-fade-up"
@@ -93,7 +93,7 @@ export default function HeroSlideshow() {
             <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/50 font-medium mb-4">
               {slide.sub}
             </p>
-            <h1 className="text-[38px] md:text-[64px] lg:text-[80px] font-bold tracking-[-0.04em] leading-[0.95] text-white mb-8 whitespace-pre-line">
+            <h1 className="text-[42px] md:text-[88px] lg:text-[120px] xl:text-[140px] font-bold tracking-[-0.04em] leading-[0.92] text-white mb-8 whitespace-pre-line">
               {slide.headline}
             </h1>
             <Link
